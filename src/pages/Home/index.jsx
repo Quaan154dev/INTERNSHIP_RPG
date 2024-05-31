@@ -1,5 +1,7 @@
-function Home() {
-  return <h1>404</h1>;
+import React from "react";
+
+function index() {
+  return <div>index</div>;
 }
 
-export default Home;
+export default index;
