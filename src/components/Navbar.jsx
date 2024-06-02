@@ -7,7 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const [openMenu, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -22,7 +22,9 @@ const Navbar = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+  };
   return (
     <nav
       className={`${
@@ -34,17 +36,22 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
         <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
         <div>
-          <div className="w-full bg-pink-300 flex gap-2 items-center pr-2 pl-2 rounded-2xl h-min font-light shadow-lg cursor-pointer">
+          <div
+            className="w-full bg-pink-300 flex gap-2 items-center pr-2 pl-2 rounded-2xl h-min font-light shadow-lg cursor-pointer"
+            onClick={handleMenuToggle}
+          >
             Menu
             <FontAwesomeIcon icon={faBars} />
           </div>
-          {/* <div className="bg-black absolute w-max p-2  items-center mt-2 ">
-            <ul>
-              <li>Home</li>
-              <li>Learn</li>
-              <li>Game</li>
-            </ul>
-          </div> */}
+          {openMenu && (
+            <div className="bg-black absolute w-max p-2  items-center mt-2 text-white justify-center flex ">
+              <ul>
+                <li>Home</li>
+                <li>Learn</li>
+                <li>Game</li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </nav>

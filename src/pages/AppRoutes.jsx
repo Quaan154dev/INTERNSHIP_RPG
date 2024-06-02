@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import NotFound from "./NotFound";
-import MainPage from "./MainPage";
 import Home from "./Home";
 
 function AppRoutes() {

@@ -1,11 +1,9 @@
 import React from "react";
-import BookCanvas from "./canvas/Book";
 
 const HomeGame = () => {
   return (
-    <div>
-      {/* <BookCanvas /> */}
-      game
+    <div className=" pink-gradient flex flex-col h-svh text-center ">
+      <h1>PLAY HARD</h1>
     </div>
   );
 };

@@ -10,19 +10,20 @@ import React, { useRef, useState } from "react";
 import "../services/Utils";
 import { Canvas, useFrame } from "react-three-fiber";
 import { easing } from "maath";
+
 function Rig(props) {
   const ref = useRef();
   const scroll = useScroll();
   useFrame((state, delta) => {
-    ref.current.rotation.y = -scroll.offset * (Math.PI * 2); // Rotate contents
-    state.events.update(); // Raycasts every frame rather than on pointer-move
+    ref.current.rotation.y = -scroll.offset * (Math.PI * 2);
+    state.events.update();
     easing.damp3(
       state.camera.position,
       [-state.pointer.x * 2, state.pointer.y + 1.5, 10],
       0.3,
       delta
-    ); // Move camera
-    state.camera.lookAt(0, 0, 0); // Look at center
+    );
+    state.camera.lookAt(0, 0, 0);
   });
   return <group ref={ref} {...props} />;
 }
@@ -98,18 +99,20 @@ function Banner(props) {
 
 const HomeBanner = () => {
   return (
-    <div className="w-2/4 h-3/4">
-      <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
-        <fog attach="fog" args={["#a79", 8.5, 12]} />
-        <ScrollControls pages={10} infinite>
-          <Rig rotation={[0, 0, 0.1]}>
-            <Carousel />
-          </Rig>
-          <Banner position={[0, -0.1, 0]} />
-        </ScrollControls>
-        <Environment preset="dawn" blur={0.5} />
-      </Canvas>
-    </div>
+    <>
+      <div className="w-2/4 h-3/4">
+        <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
+          <fog attach="fog" args={["#a79", 8.5, 12]} />
+          <ScrollControls pages={10} infinite>
+            <Rig rotation={[0, 0, 0.1]}>
+              <Carousel />
+            </Rig>
+            <Banner position={[0, -0.1, 0]} />
+          </ScrollControls>
+          <Environment preset="dawn" blur={0.5} />
+        </Canvas>
+      </div>
+    </>
   );
 };
 

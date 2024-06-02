@@ -1,6 +1,5 @@
 import React from "react";
 import { styles } from "../styles";
-import BookCanvas from "./canvas/Book";
 
 const TextBanner = () => {
   return (
@@ -21,7 +20,6 @@ const TextBanner = () => {
             the Korean alphabet
             <br className="sm:block hidden" />
           </p>
-          {/* <BookCanvas /> */}
         </div>
       </div>
     </>
