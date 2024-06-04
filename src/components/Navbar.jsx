@@ -34,14 +34,20 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
-        <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+        <img
+          src={logo}
+          alt="logo"
+          className="w-9 h-9 object-contain max-md:h-7"
+        />
         <div>
           <div
             className="w-full bg-pink-300 flex gap-2 items-center pr-2 pl-2 rounded-2xl h-min font-light shadow-lg cursor-pointer"
             onClick={handleMenuToggle}
           >
-            Menu
-            <FontAwesomeIcon icon={faBars} />
+            <span className="max-md:hidden">Menu</span>
+            <span className="max-md:t-2">
+              <FontAwesomeIcon icon={faBars} />
+            </span>
           </div>
           {openMenu && (
             <div className="bg-black absolute w-max p-2  items-center mt-2 text-white justify-center flex ">

@@ -16,15 +16,15 @@ function Home() {
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
           <div>
-            <div className="flex flex-row h-svh justify-around items-center   text-center  w-full  ">
+            <div className="flex flex-row h-svh justify-around items-center   text-center  w-full relative  max-md:flex-col ">
               <TextBanner />
               <HomeBanner />
-              <div className=" absolute bottom-2">
+              <div className=" absolute bottom-2 max-md:right-1">
                 <a href="#about">
-                  <div className="w-[32px] h-[64px] rounded-xl border-4 border-pink-200 flex justify-center items-start p-2">
+                  <div className="w-[32px] h-[48px] rounded-xl border-4 border-pink-200 flex justify-center items-start p-2">
                     <motion.div
                       animate={{
-                        y: [0, 24, 0],
+                        y: [0, 12, 0],
                       }}
                       transition={{
                         duration: 1.5,

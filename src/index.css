@@ -24,13 +24,13 @@
 }
 
 .background {
-  background: #d7b4d3
+  background: rgb(56, 95, 190);
+  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgba(204, 98, 98, 1) 96%);
 }
 
 .pink-gradient {
-  background: rgb(191, 186, 236);
-  background: linear-gradient(0deg, rgba(191, 186, 236, 1) 8%, rgba(217, 201, 226, 1) 53%, rgba(251, 222, 255, 1) 100%);
-
+  background: rgb(126, 151, 212);
+  background: linear-gradient(0deg, rgba(126, 151, 212, 1) 0%, rgba(229, 235, 242, 1) 43%, rgba(246, 153, 153, 1) 96%);
 }
 
 .purple-gradient {
@@ -39,8 +39,8 @@
 }
 
 .blue-gradient {
-  background: rgb(255, 250, 222);
-  background: linear-gradient(0deg, rgba(255, 250, 222, 1) 2%, rgba(201, 211, 226, 1) 42%, rgba(215, 198, 237, 1) 96%);
+  background: rgb(126, 151, 212);
+  background: linear-gradient(0deg, rgba(126, 151, 212, 1) 0%, rgba(229, 235, 242, 1) 43%, rgba(246, 153, 153, 1) 96%);
 }
 
 .violet-gradient {
@@ -182,4 +182,27 @@ canvas {
   opacity: 0;
   touch-action: none;
   animation: fade-in 5s ease 1s forwards;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 50% 50%;
+    background-size: 0% 0%;
+  }
+
+  100% {
+    background-position: 50% 50%;
+    background-size: 200% 200%;
+  }
+}
+
+.button-gradient-hover {
+  background: linear-gradient(to left,
+      #ea87c0,
+      #cc9ffe);
+  ;
+}
+
+.button-gradient-hover:hover {
+  animation: gradientMove 1s forwards;
 }
