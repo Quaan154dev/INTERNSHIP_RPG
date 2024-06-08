@@ -31,8 +31,8 @@ function Home() {
                     <span
                       className={
                         workHover
-                          ? " pl-1 pr-1 border-2 text-blue-200 border-blue-200 font-light shadow-lg cursor-pointer   button-gradient-left-hover border-solid "
-                          : " pl-1 pr-1 border-2   border-solid  border-white cursor-pointer   text-white   font-light shadow-lg  "
+                          ? " pl-1 pr-1 border-2 text-blue-200 border-blue-100 font-light shadow-lg cursor-pointer   button-gradient-left-hover border-solid "
+                          : " pl-1 pr-1 border-2   border-solid border-blue-200   cursor-pointer   text-blue-200    font-light shadow-lg  "
                       }
                       onMouseEnter={() => setWorkHover(true)}
                       onMouseLeave={() => setWorkHover(false)}
@@ -41,7 +41,7 @@ function Home() {
                     </span>
                     {workHover ? (
                       <span
-                        className=" absolute top-full mt-1 text-blue-200   "
+                        className=" absolute top-full mt-1 text-blue-100   "
                         style={{ fontSize: "12px" }}
                       >
                         Study with Card
@@ -57,7 +57,7 @@ function Home() {
                       className={
                         playHover
                           ? " pl-1 pr-1 border-2 shadow text-red-100  button-gradient-right-hover  border-solid "
-                          : " pl-1 pr-1 border-2 shadow border-white   text-white   border-solid "
+                          : " pl-1 pr-1 border-2 shadow border-red-100    text-red-100    border-solid "
                       }
                       onMouseEnter={() => setPlayHover(true)}
                       onMouseLeave={() => setPlayHover(false)}
