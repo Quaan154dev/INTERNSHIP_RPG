@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styles } from "../styles";
+import hoverSound from "../assets/mp3/hoverSound.mp3";
 
 const TextBanner = () => {
+  const hoverUrl = useRef(new Audio(hoverSound));
+  const [hoverButton, setHoverButton] = useState(false);
+  const playHoverSound = (audioRef) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  };
+  useEffect(() => {
+    if (hoverButton) {
+      playHoverSound(hoverUrl);
+    }
+  }, [hoverButton]);
+
   return (
     <>
       <div className=" fog-effect bg-cover bg-no-repeat z-1 w-2/4 max-md:w-full max-md:pt-10 ">
         <div className="flex flex-col gap-8 items-center justify-center  ">
           <h1 className={`  flex flex-col gap-5 `}>
             <span
-              className={`red-text flex flex-col justify-start text-xs items-start`}
+              className={` text-red-600 flex flex-col justify-start text-xs items-start`}
             >
               {" "}
               EASY AND INTERESTING
@@ -32,13 +47,17 @@ const TextBanner = () => {
               </span>
             </div>
             <span
-              className={`blue-text flex flex-col justify-start text-sm items-end`}
+              className={`text-blue-900 flex flex-col justify-start text-sm items-end`}
             >
               ALPHABET
             </span>
           </h1>
           <div className="flex flex-col gap-2 items-center">
-            <button className=" button-gradient-hover w-fit pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 text-white  text-base max-md:text-sm   ">
+            <button
+              className=" button-gradient-hover w-fit pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 text-white  text-base max-md:text-sm   "
+              onMouseEnter={() => setHoverButton(true)}
+              onMouseLeave={() => setHoverButton(false)}
+            >
               WORK HARD PLAY HARD
             </button>
             <p className={` cloud-text  blueX-text ${styles.sectionSubText} `}>

@@ -74,8 +74,14 @@
 }
 
 .blueX-text {
-  background: linear-gradient(to bottom, #111362e7,
-      #b00f0feb);
+  background: linear-gradient(to top, #180404, #0006bbe7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.redX-text {
+  background: linear-gradient(to top, #450d0d, #f00606);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
