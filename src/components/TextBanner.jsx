@@ -13,13 +13,9 @@ const TextBanner = () => {
             WORK HARD PLAY HARD
           </button>
           <p
-            className={`${styles.heroSubText} text-black mt-2 text-sm max-md:text-xs`}
+            className={`text-black ${styles.heroSubText} mt-2 text-xs max-md:text-xs  `}
           >
-            A website where you can{" "}
-            <span className="bg-pink-300 pl-1 pr-1 shadow rounded-md">
-              learn & play
-            </span>{" "}
-            the Korean alphabet
+            A website where you can Learn & Play the Korean alphabet
             <br className="sm:block hidden" />
           </p>
         </div>

@@ -67,6 +67,7 @@
   background: linear-gradient(to top,
       #ec008c,
       #fc6767);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -205,4 +206,10 @@ canvas {
 
 .button-gradient-hover:hover {
   animation: gradientMove 1s forwards;
+}
+
+.active-item {
+  background-color: pink;
+  color: white;
+  font-weight: bold;
 }
