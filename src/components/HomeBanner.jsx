@@ -79,7 +79,7 @@ function Banner(props) {
   const texture = useTexture("/logo.png");
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   const scroll = useScroll();
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     ref.current.material.time.value += Math.abs(scroll.delta) * 4;
     ref.current.material.map.offset.x += delta / 2;
   });
@@ -102,7 +102,7 @@ const HomeBanner = () => {
     <>
       <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4">
         <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
-          <fog attach="fog" args={["#a79", 8.5, 12]} />
+          <fog attach="fog" args={["#e6213b", 8.5, 12]} />
           <ScrollControls pages={10} infinite>
             <Rig rotation={[0, 0, 0.1]}>
               <Carousel />

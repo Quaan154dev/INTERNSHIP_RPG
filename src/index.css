@@ -8,8 +8,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
+
+  font-family: 'Times New Roman', Times, serif;
+
   cursor: url('./assets/cursor.svg'),
     auto;
   overflow: -moz-scrollbars-none;
@@ -24,13 +25,13 @@
 }
 
 .background {
-  background: rgb(56, 95, 190);
-  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgba(204, 98, 98, 1) 96%);
+  background: #F6E2F3;
+  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgb(213, 170, 200) 96%);
 }
 
 .pink-gradient {
   background: rgb(126, 151, 212);
-  background: linear-gradient(0deg, rgba(126, 151, 212, 1) 0%, rgba(229, 235, 242, 1) 43%, rgba(246, 153, 153, 1) 96%);
+  background: linear-gradient(0deg, rgb(84, 119, 208) 0%, rgba(229, 235, 242, 1) 43%, #ff030333 96%);
 }
 
 .purple-gradient {
@@ -58,14 +59,44 @@
 }
 
 
+.red-text {
+  background-color: #c51414eb;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-text {
+  background-color: #17187ce7;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blueX-text {
+  background: linear-gradient(to bottom, #111362e7,
+      #b00f0feb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .pink-text-gradient {
-  background: #ec008c;
+
+  background: linear-gradient(to top, #4346f7e7,
+      #ec0000eb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pink2-text-gradient {
+  background: #F6E2F3;
   background: -webkit-linear-gradient(to top,
-      #ec008c,
-      #fc6767);
+      #F6E2F3,
+      #678ffc);
   background: linear-gradient(to top,
-      #ec008c,
+      #ec0000,
       #fc6767);
   background-clip: text;
   -webkit-background-clip: text;
@@ -185,23 +216,26 @@ canvas {
   animation: fade-in 5s ease 1s forwards;
 }
 
+.button-gradient-nav-hover {
+  background: linear-gradient(to right, #beb4ff, #f31313);
+  background-size: 200% 200%;
+}
+
 @keyframes gradientMove {
   0% {
-    background-position: 50% 50%;
-    background-size: 0% 0%;
+    background-position: 0% 0%;
   }
 
   100% {
-    background-position: 50% 50%;
-    background-size: 200% 200%;
+    background-position: 0% 100%;
   }
 }
 
 .button-gradient-hover {
-  background: linear-gradient(to left,
-      #ea87c0,
-      #cc9ffe);
-  ;
+  background: linear-gradient(to top, #4346f7cd,
+      #ec00009d);
+  background-size: 200% 200%;
+  transition: background-position 0.5s ease-in-out
 }
 
 .button-gradient-hover:hover {
@@ -212,4 +246,72 @@ canvas {
   background-color: pink;
   color: white;
   font-weight: bold;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 200% 0%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.button-gradient-left-hover {
+  background: linear-gradient(to right, transparent, #072170);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.button-gradient-left-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+
+@keyframes gradientMove {
+  0% {
+    background-position: 200% 0%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.button-gradient-right-hover {
+  background: linear-gradient(to right, transparent, #e84141);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.button-gradient-right-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.cloud-text {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 0;
+  white-space: nowrap;
+}
+
+
+.button-gradient-hover:hover~.cloud-text {
+  opacity: 1;
+}
+
+
+
+.work-text {
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.button-gradient-hover:hover~.work-text {
+  opacity: 1;
 }

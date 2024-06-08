@@ -15,22 +15,25 @@ function Home() {
         <StarsCanvas />
 
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
+          <Navbar active="home" />
           <div className="relative flex justify-center">
             <div className="flex flex-row h-svh justify-around items-center   text-center  w-full relative  max-md:flex-col ">
               <TextBanner />
               <HomeBanner />
             </div>
             <div className="absolute  bottom-6 flex justify-center flex-col items-center gap-2">
-              <p className="text-xs italic text-pink-200">
-                Please choose Lorem ipsum dolor sit amet consectetur adipisicing
-                elit.
+              <p className="text-xs italic text-white">
+                Choose the method you want to choose to learn
               </p>
-              <div className=" flex gap-10">
+              <div className=" flex gap-4">
                 <Link to="/learn">
                   <button className="flex flex-col text-center items-center gap-1 ">
                     <span
-                      className=" pl-1 pr-1 border-2 shadow border-slate-900  border-solid button-gradient-hover"
+                      className={
+                        workHover
+                          ? " pl-1 pr-1 border-2 text-blue-200 border-blue-200 font-light shadow-lg cursor-pointer   button-gradient-left-hover border-solid "
+                          : " pl-1 pr-1 border-2   border-solid  border-white cursor-pointer   text-white   font-light shadow-lg  "
+                      }
                       onMouseEnter={() => setWorkHover(true)}
                       onMouseLeave={() => setWorkHover(false)}
                     >
@@ -38,10 +41,10 @@ function Home() {
                     </span>
                     {workHover ? (
                       <span
-                        className=" text-white absolute top-full mt-1 "
-                        style={{ fontSize: "10px" }}
+                        className=" absolute top-full mt-1 text-blue-200   "
+                        style={{ fontSize: "12px" }}
                       >
-                        Learn Korean alphabetical
+                        Study with Card
                       </span>
                     ) : (
                       <></>
@@ -50,19 +53,23 @@ function Home() {
                 </Link>
                 <Link to="/play">
                   <button className="flex flex-col text-center items-center  gap-1">
-                    <span
-                      className=" pl-1 pr-1 border-2 shadow border-slate-900  border-solid button-gradient-hover"
+                    <button
+                      className={
+                        playHover
+                          ? " pl-1 pr-1 border-2 shadow text-red-100  button-gradient-right-hover  border-solid "
+                          : " pl-1 pr-1 border-2 shadow border-white   text-white   border-solid "
+                      }
                       onMouseEnter={() => setPlayHover(true)}
                       onMouseLeave={() => setPlayHover(false)}
                     >
                       Play hard
-                    </span>
+                    </button>
                     {playHover ? (
                       <span
-                        className="text-white absolute top-full mt-1 "
-                        style={{ fontSize: "10px" }}
+                        className="work-text opacity-100 text-red-100 absolute top-full mt-1 "
+                        style={{ fontSize: "12px" }}
                       >
-                        Game to practice{" "}
+                        Game to practice
                       </span>
                     ) : (
                       <></>

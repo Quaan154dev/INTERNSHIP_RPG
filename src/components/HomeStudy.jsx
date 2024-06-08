@@ -5,7 +5,7 @@ const HomeStudy = () => {
   const [openTag, setOpenTag] = useState("1");
   return (
     <>
-      <div className="flex flex-col h-svh text-center blue-gradient">
+      <div className="flex flex-col h-svh text-center pink-gradient">
         <div
           className="
             bg-cover bg-no-repeat z-1 flex justify-around items-center text-center h-full
@@ -14,7 +14,7 @@ const HomeStudy = () => {
           <div className="absolute left-0 ">
             {openTag === "1" ? (
               <div
-                className="border-2 shadow-sm  p-2 cursor-pointer rounded-r-full"
+                className="border-2 shadow-sm border-s-orange-50 p-2 cursor-pointer rounded-r-full"
                 onClick={() => setOpenTag("1")}
               >
                 Card Alphabet

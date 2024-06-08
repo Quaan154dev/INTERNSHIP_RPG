@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 const LearnHome = () => {
   return (
     <>
-      <Navbar />
+      <Navbar active="work" />
       <HomeStudy />
     </>
   );
