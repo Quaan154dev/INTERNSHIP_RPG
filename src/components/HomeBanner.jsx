@@ -48,7 +48,7 @@ function Card({ url, ...props }) {
   const [hovered, hover] = useState(false);
   const pointerOver = (e) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     easing.damp3(ref.current.scale, hovered ? 1.15 : 1, 0.1, delta);
     easing.damp(
       ref.current.material,
