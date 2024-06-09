@@ -100,7 +100,7 @@ function Banner(props) {
 const HomeBanner = () => {
   return (
     <>
-      <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4">
+      <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4 ">
         <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
           <fog attach="fog" args={["#e6213b", 8.5, 12]} />
           <ScrollControls pages={10} infinite>
