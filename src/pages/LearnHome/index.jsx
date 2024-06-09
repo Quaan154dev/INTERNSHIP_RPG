@@ -6,9 +6,7 @@ const LearnHome = () => {
   return (
     <>
       <Navbar active="work" />
-      {/* <div id="awan"> */}
       <HomeStudy />
-      {/* </div> */}
     </>
   );
 };

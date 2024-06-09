@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { logo } from "../assets";
 import { styles } from "../styles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -11,7 +11,6 @@ import { useSound } from "../SoundCotext";
 
 const Navbar = ({ active }) => {
   const [activeItem, setActiveItem] = useState(active);
-  const audioRef = useRef(null);
   const navClickRef = useRef(new Audio(navClick));
   const { isSoundEnabled } = useSound();
   const playHoverSound = (audioRef) => {
@@ -24,12 +23,22 @@ const Navbar = ({ active }) => {
     setActiveItem(item);
     playHoverSound(navClickRef);
   };
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const textElement = textRef.current;
+    const containerElement = containerRef.current;
+
+    if (textElement && containerElement) {
+      const isOverflow = textElement.scrollWidth > containerElement.clientWidth;
+      setIsOverflowing(isOverflow);
+    }
+  }, []);
 
   return (
     <>
-      <audio id="audio" ref={audioRef} autoPlay loop>
-        Your browser does not support the audio element.
-      </audio>
       <nav
         className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20`}
       >

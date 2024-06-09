@@ -46,6 +46,7 @@ function Carousel({ radius = 1.4, count = 8 }) {
 function Card({ url, ...props }) {
   const ref = useRef();
   const [hovered, hover] = useState(false);
+  // eslint-disable-next-line no-sequences
   const pointerOver = (e) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
   useFrame((_, delta) => {
