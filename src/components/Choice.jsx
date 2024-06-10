@@ -44,6 +44,7 @@ const Choice = () => {
 
   return (
     <>
+      <audio id="audio" preload="auto"></audio>
       {!isSmallScreen ? (
         <p
           className={
