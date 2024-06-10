@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,11 +13,13 @@
 
   font-family: 'Times New Roman', Times, serif;
 
-  cursor: url('./assets/cursor.svg'),
-    auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+body {
+  cursor: url('./assets/cursor.svg'), auto;
 }
 
 .hash-span {
@@ -26,7 +30,7 @@
 
 .background {
   background: #F6E2F3;
-  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgb(213, 170, 200) 96%);
+  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgb(244, 203, 231) 96%);
 }
 
 .pink-gradient {
@@ -41,7 +45,7 @@
 
 .blue-gradient {
   background: rgb(126, 151, 212);
-  background: linear-gradient(0deg, rgba(126, 151, 212, 1) 0%, rgba(229, 235, 242, 1) 43%, rgba(246, 153, 153, 1) 96%);
+  background: linear-gradient(0deg, rgb(173, 192, 241) 0%, rgba(229, 235, 242, 1) 43%, #8181f062 96%);
 }
 
 .violet-gradient {
@@ -223,7 +227,7 @@ canvas {
 }
 
 .button-gradient-nav-hover {
-  background: linear-gradient(to right, #beb4ff, #f31313);
+  background: linear-gradient(to right, #7185e817, #da6f6f62);
   background-size: 200% 200%;
 }
 
@@ -320,4 +324,108 @@ canvas {
 
 .button-gradient-hover:hover~.work-text {
   opacity: 1;
+}
+
+#awan {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #efefef;
+  background: url(./assets/bg.png) center top repeat-x;
+
+  cursor: url('./assets/cursorBlue.svg'),
+    auto !important;
+  animation: awan-animasi 10s linear infinite;
+  -ms-animation: awan-animasi 10s linear infinite;
+  -moz-animation: awan-animasi 10s linear infinite;
+  -webkit-animation: awan-animasi 10s linear infinite;
+  z-index: 0;
+}
+
+#awanPink {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #efefef;
+  background: url(./assets/bgPink.png) center top repeat-x;
+
+  animation: awan-animasi 10s linear infinite;
+  -ms-animation: awan-animasi 10s linear infinite;
+  -moz-animation: awan-animasi 10s linear infinite;
+  -webkit-animation: awan-animasi 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+  ;
+}
+
+@-webkit-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+  ;
+}
+
+@-ms-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+  ;
+}
+
+@-moz-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+  ;
+}
+
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrolling-text-animation 10s linear infinite;
+}
+
+@keyframes scrolling-text-animation {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }

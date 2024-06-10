@@ -46,9 +46,10 @@ function Carousel({ radius = 1.4, count = 8 }) {
 function Card({ url, ...props }) {
   const ref = useRef();
   const [hovered, hover] = useState(false);
+  // eslint-disable-next-line no-sequences
   const pointerOver = (e) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     easing.damp3(ref.current.scale, hovered ? 1.15 : 1, 0.1, delta);
     easing.damp(
       ref.current.material,

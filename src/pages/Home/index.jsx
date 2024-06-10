@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TextBanner from "../../components/TextBanner";
 import Navbar from "../../components/Navbar";
 import { StarsCanvas } from "../../components/canvas";
 import HomeBanner from "../../components/HomeBanner";
 import Choice from "../../components/Choice";
 
-const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    const listener = () => setMatches(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, [query]);
-
-  return matches;
-};
 function Home() {
   return (
     <>

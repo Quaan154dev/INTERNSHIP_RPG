@@ -27,6 +27,7 @@ const Choice = () => {
     if (workHover) {
       playHoverSound(clickAudioRef);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [workHover]);
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
@@ -38,10 +39,12 @@ const Choice = () => {
     if (playHover) {
       playHoverSound(gameClickRef);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playHover]);
 
   return (
     <>
+      <audio id="audio" preload="auto"></audio>
       {!isSmallScreen ? (
         <p
           className={
