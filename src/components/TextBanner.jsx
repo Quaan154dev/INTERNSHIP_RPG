@@ -12,7 +12,9 @@ const TextBanner = () => {
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
       audioRef.current.currentTime = 0;
-      audioRef.current.play();
+      audioRef.current.play().catch((error) => {
+        console.error("Sound play failed:", error);
+      });
     }
   };
   useEffect(() => {
@@ -24,9 +26,6 @@ const TextBanner = () => {
 
   return (
     <>
-      <audio autoPlay loop>
-        Your browser does not support the audio element.
-      </audio>
       <div className=" fog-effect bg-cover bg-no-repeat z-1 w-2/4 max-md:w-full max-md:pt-16">
         <div className="flex flex-col gap-8 items-center justify-center  max-md:gap-3 ">
           <h1 className={`  flex flex-col gap-5  max-md:gap-2 `}>

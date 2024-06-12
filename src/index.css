@@ -19,7 +19,7 @@
 }
 
 body {
-  cursor: url('./assets/cursor.svg'), auto;
+  /* cursor: url('./assets/cursor.svg'), auto; */
 }
 
 .hash-span {
@@ -338,8 +338,8 @@ canvas {
   background-color: #efefef;
   background: url(./assets/bg.png) center top repeat-x;
 
-  cursor: url('./assets/cursorBlue.svg'),
-    auto !important;
+  /* cursor: url('./assets/cursorBlue.svg'), */
+  /* auto !important; */
   animation: awan-animasi 10s linear infinite;
   -ms-animation: awan-animasi 10s linear infinite;
   -moz-animation: awan-animasi 10s linear infinite;
