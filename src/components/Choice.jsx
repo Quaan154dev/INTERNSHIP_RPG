@@ -32,7 +32,9 @@ const Choice = () => {
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
       audioRef.current.currentTime = 0;
-      audioRef.current.play();
+      audioRef.current.play().catch((e) => {
+        console.error("Sound play failed: ", e);
+      });
     }
   };
   useEffect(() => {

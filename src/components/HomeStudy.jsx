@@ -7,7 +7,7 @@ import { useSound } from "../SoundCotext";
 
 const HomeStudy = () => {
   const [openTag, setOpenTag] = useState("1");
-  const audioRef = useRef(null);
+  const audioRef = useRef(new Audio(paperMp3));
   const { isSoundEnabled } = useSound();
   const playHoverSound = () => {
     if (audioRef.current && isSoundEnabled) {
@@ -21,9 +21,6 @@ const HomeStudy = () => {
     <>
       <StarsCanvas />
 
-      <audio id="audio" ref={audioRef} src={paperMp3} preload="auto">
-        Your browser does not support the audio element.
-      </audio>
       <div id={openTag === "1" ? "awan" : "awanPink"}>
         <div className="flex flex-col h-svh text-center blue-gradient">
           <div
