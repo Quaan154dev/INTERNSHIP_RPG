@@ -11,6 +11,13 @@ import "../services/Utils";
 import { Canvas, useFrame } from "react-three-fiber";
 import { easing } from "maath";
 
+import springBg from '../assets/Spring/Spring.jpg';
+import summerBg from '../assets/Summer/Summer.jpg';
+import fallBg from '../assets/Fall/Fall.jpg';
+import winterBg from '../assets/winter/Winter.jpg';
+
+const gameImages = [springBg, summerBg,fallBg,winterBg];
+
 function Rig(props) {
   const ref = useRef();
   const scroll = useScroll();
@@ -32,7 +39,7 @@ function Carousel({ radius = 1.4, count = 8 }) {
   return Array.from({ length: count }, (_, i) => (
     <Card
       key={i}
-      url={`/game_${Math.floor(i % 10) + 1}.jpg`}
+      url={gameImages[i % gameImages.length]}
       position={[
         Math.sin((i / count) * Math.PI * 2) * radius,
         0,

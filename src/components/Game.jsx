@@ -23,6 +23,8 @@ import skiing from '../assets/winter/skiing.png';
 import soju from '../assets/winter/soju.png';
 import tteokbokki from '../assets/winter/tteokbokki.png';
 
+import menu from '../assets/menu.png'
+
 const Game = () => {
   const canvasRef = useRef(null);
   const containLetterRef = useRef(null);
@@ -221,7 +223,7 @@ const Game = () => {
     </div>
     
     <div className="absolute bottom-2 left-2">
-      <button id="menuButton" className="w-10 h-10 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(./menu.png)' }} onClick={() => setIsPaused(true)}></button>
+      <button id="menuButton" className="w-10 h-10 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url('+menu+')' }} onClick={() => setIsPaused(true)}></button>
     </div>
 
     <div className={isOnSupport ? "bg-black text-white absolute bottom-2 right-2 flex p-2 rounded-md " :"hidden"   } ref={containLetterRef}></div>
