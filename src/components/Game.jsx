@@ -23,9 +23,18 @@ import skiing from '../assets/winter/skiing.png';
 import soju from '../assets/winter/soju.png';
 import tteokbokki from '../assets/winter/tteokbokki.png';
 
-import menu from '../assets/menu.png'
+import menu from '../assets/menu.png';
+
+import soundCorrectEffect from '../assets/mp3/correctAnswer.mp3';
+import soundWrongEffect from '../assets/mp3/wrongAnswer.mp3';
+import soundBackgroundEffect from '../assets/mp3/gameBackground.mp3';
+import soundNextLevelEffect from '../assets/mp3/nextLevel.mp3';
+import soundFailureEffect from '../assets/mp3/failure.mp3';
+
+import {Howl} from 'howler';
 
 const Game = () => {
+  
   const canvasRef = useRef(null);
   const containLetterRef = useRef(null);
   const [score, setScore] = useState(0);
@@ -35,6 +44,8 @@ const Game = () => {
   const [isEnd, setIsEnd] = useState(false);
   const [isOnSupport, setIsOnSupport] = useState(false);
   const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
+  const [backgroundMusic, setBackgroundMusic] = useState(null);
+
 
   const backgrounds = [springBg, summerBg, fallBg, winterBg];
   const ballImages = {
@@ -42,6 +53,7 @@ const Game = () => {
     [summerBg]: [fireworks, music, patbingsu],
     [fallBg]: [hanok, mapLeaf, skyLantern],
     [winterBg]: [skiing, soju, tteokbokki]
+
   };
 
   const koreanKeyMap = {
@@ -73,6 +85,81 @@ const Game = () => {
     'ㅡ': 'S'
   };
 
+  const playCorrectSound = () => {
+    const correctSound = new Howl({
+      src: [soundCorrectEffect],
+      volume: 0.2,
+      onend: function() {
+        console.log('Finished playing the correct sound');
+      }
+    });
+    correctSound.play();
+  };
+
+  
+  const playWrongSound = () => {
+    const wrongSound = new Howl({
+      src: [soundWrongEffect],
+      volume: 0.2,
+      onend: function() {
+        console.log('Finished playing the wrong sound');
+      }
+    });
+    wrongSound.play();
+  };
+
+  const playNextLevelSound = () => {
+    const NextLevelSound = new Howl({
+      src: [soundNextLevelEffect],
+      volume: 0.4,
+      onend: function() {
+        console.log('Finished playing the wrong sound');
+      }
+    });
+    NextLevelSound.play();
+  };
+
+
+  const playFailureSound = () => {
+    const FailureSound = new Howl({
+      src: [soundFailureEffect],
+      volume: 0.4,
+      onend: function() {
+        console.log('Finished playing the wrong sound');
+      }
+    });
+    FailureSound.play();
+  };
+
+  useEffect(() => {
+    
+    const backgroundMusic = new Howl({
+      src: [soundBackgroundEffect],
+      loop: true, 
+      volume: 0.1 // Set initial volume
+    });
+    backgroundMusic.play();
+    setBackgroundMusic(backgroundMusic);
+
+    return () => {
+      // Stop the music when the component unmounts
+      backgroundMusic.stop();
+    };
+    
+  }, []);
+
+  useEffect(() => {
+    if (backgroundMusic) {
+      if (isPaused) {
+        backgroundMusic.pause();
+      } else {
+        backgroundMusic.play();
+      }
+    }
+  }, [isPaused, backgroundMusic]);
+
+  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -82,6 +169,7 @@ const Game = () => {
       bg.src = backgrounds[currentBackgroundIndex];
       ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
     };
+
 
     const drawBalls = () => {
       balls.forEach(ball => {
@@ -125,9 +213,11 @@ const Game = () => {
       updatedBalls.forEach(ball => {
         if (ball.y + ball.radius >= canvasRef.current.height) {
           setHealth(prevHealth => prevHealth - 10);
+          playWrongSound();
           if (health <= 0) {
             setIsPaused(true);
             setIsEnd(true);
+            playFailureSound();
           }
           removeLetterFromList(ball.letter);
         }
@@ -143,7 +233,9 @@ const Game = () => {
       if (koreanKeyMap[ball.letter] === key || ball.letter === key) {
         setScore(prevScore => {
           const newScore = prevScore + 10;
+          playCorrectSound();
           if (newScore % 40 === 0) {
+            playNextLevelSound();
             changeBackground();
           }
           return newScore;
