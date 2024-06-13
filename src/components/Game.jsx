@@ -16,7 +16,7 @@ import patbingsu from '../assets/Summer/patbingsu.png';
 
 import hanok from '../assets/Fall/hanok.png';
 import mapLeaf from '../assets/Fall/maple-leaf.png';
-import skyLantern from  '../assets/Fall/sky-lantern.png';
+import skyLantern from '../assets/Fall/sky-lantern.png';
 
 
 import skiing from '../assets/winter/skiing.png';
@@ -113,7 +113,7 @@ const Game = () => {
 
     const animationId = requestAnimationFrame(updateGame);
     return () => cancelAnimationFrame(animationId);
-  }, [balls, isPaused, currentBackgroundIndex]);
+  });
 
   const updateBalls = () => {
     setBalls(prevBalls => {
@@ -212,41 +212,44 @@ const Game = () => {
     return () => {
       window.removeEventListener('keydown', handleKeydown);
     };
-  }, []);
+  });
 
   return (
     <div className="relative w-full h-full flex justify-center">
-    <canvas id="gameCanvas" ref={canvasRef} width="600" height="600" className="relative bg-white rounded-lg shadow-2xl mt-10"></canvas>
-    <div className="absolute top-2 left-0 right-0 mx-auto flex justify-between w-full px-4">
-      <div className="bg-gray-800 text-white p-2 rounded-md">Score: {score}</div>
-      <div className="bg-gray-800 text-white p-2 rounded-md">Health: {health}</div>
-    </div>
-    
-    <div className="absolute bottom-2 left-2">
-      <button id="menuButton" className="w-10 h-10 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url('+menu+')' }} onClick={() => setIsPaused(true)}></button>
-    </div>
-
-    <div className={isOnSupport ? "bg-black text-white absolute bottom-2 right-2 flex p-2 rounded-md " :"hidden"   } ref={containLetterRef}></div>
-
-    {isPaused && (
-      <div id="MenuScreen" className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 p-8 rounded-lg">
-
-        {isEnd ? <div className='text-white bg-black'>Your Score:{score} </div> : null }
-
-        <button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => document.location.reload()}>New Game</button>
-
-
-        {isEnd ? null : <button className= "mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"  style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => setIsPaused(false)}>Resume</button> }
-   
-
-        {isOnSupport ?
-         (<button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() =>setIsOnSupport(true) }>Off Support</button>):
-        (<button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() =>setIsOnSupport(true) }>On Support </button>) }
-      
-     
+      <canvas id="gameCanvas" ref={canvasRef} width="600" height="600" className="relative bg-white rounded-lg shadow-2xl mt-10"></canvas>
+      <div className="absolute top-2 left-0 right-0 mx-auto flex justify-between w-full px-4">
+        <div className="bg-gray-800 text-white p-2 rounded-md">Score: {score}</div>
+        <div className="bg-gray-800 text-white p-2 rounded-md">Health: {health}</div>
       </div>
-    )}
-  </div>
+
+      <div className="absolute bottom-2 left-2">
+        <button id="menuButton" className="w-10 h-10 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(' + menu + ')' }} onClick={() => setIsPaused(true)}></button>
+      </div>
+
+      <div className={isOnSupport ? "bg-black text-white absolute bottom-2 right-2 flex p-2 rounded-md " : "hidden"} ref={containLetterRef}></div>
+
+      {isPaused && (
+        <div id="MenuScreen" className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 p-8 rounded-lg">
+
+          {isEnd ? <div className='text-white bg-black'>Your Score:{score} </div> : null}
+
+          <button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => document.location.reload()}>New Game</button>
+
+
+          {isEnd ? null : <button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => setIsPaused(false)}>Resume</button>}
+
+
+          {isOnSupport ?
+            (<button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => setIsOnSupport(true)}>Off Support</button>) :
+            (<button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: 'url(buttonOwn.jpg)' }} onClick={() => setIsOnSupport(true)}>On Support </button>)}
+
+
+          <button className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat" onClick={() => window.location.href = "./trailer/sadstory"}>Trailer</button>
+
+
+        </div>
+      )}
+    </div>
 
   );
 };
