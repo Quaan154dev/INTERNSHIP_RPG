@@ -62,6 +62,3 @@ export default function Scene() {
     </div>
   );
 }
-
-
-//ok rồi mà tôi muốn khoảng cách giữa các cảnh tăng thêm 1000 và sau khi chàng trai buồn thì dần xuất hiện một cái phi thuyền và chàng trai đi tới khi thuyền và hình ảnh chàng trai biến mất, phi thuyền bay lên trời và cũng biến mất 
