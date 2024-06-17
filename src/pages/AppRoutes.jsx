@@ -3,8 +3,9 @@ import { Route, Routes } from "react-router";
 import NotFound from "./NotFound";
 import Home from "./Home";
 import LearnHome from "./LearnHome";
-import Scene from "./SadStory"
-import SadStory from "./SadStory/trailer"
+import Scene from "./SadStory";
+import SadStory from "./SadStory/trailer";
+import Alphabetic from "../components/Alphabetic";
 
 function AppRoutes() {
   return (

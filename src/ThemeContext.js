@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { logoSumCanvas, logoSpringCanvas, logoFallCanvas } from "./assets";
 
 const ThemeContext = createContext({
-  season: "spring",
+  season: "",
   logo: { logoSumCanvas },
   setSeason: () => { },
   setLogo: () => { },
@@ -10,19 +10,21 @@ const ThemeContext = createContext({
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [season, setSeason] = useState("spring");
+  const [season, setSeason] = useState();
   const [logo, setLogo] = useState({ logoSumCanvas })
-  useEffect(() => {
-    if (season === "spring") {
-      setLogo({ logoSumCanvas })
-    } else if (season === "summer") {
-      setLogo({ logoSpringCanvas })
-    } else if (season === "fall") {
-      setLogo({ logoFallCanvas })
-    } else if (season === "winter") {
-      setLogo({ logoSumCanvas })
-    }
-  }, [season])
+  // useEffect(() => {
+  //   if (season === "spring") {
+  //     setLogo({ logoSumCanvas })
+  //   } else if (season === "summer") {
+
+  //     setLogo({ logoSpringCanvas })
+  //   } else if (season === "fall") {
+  //     setLogo({ logoFallCanvas })
+
+  //   } else if (season === "winter") {
+  //     setLogo({ logoSumCanvas })
+  //   }
+  // }, [season])
   return (
     <ThemeContext.Provider value={{ season, setSeason, logo, setLogo }}>
       {children}

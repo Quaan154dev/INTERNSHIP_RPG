@@ -5,6 +5,7 @@ import paperMp3 from "../assets/mp3/paper.mp3";
 import StarsCanvas from "./canvas/Stars";
 import { useSound } from "../SoundCotext";
 import { useTheme } from "../ThemeContext";
+import { Link } from "react-router-dom";
 
 const SeasonalElements = () => {
   const { season } = useTheme();
@@ -120,7 +121,9 @@ const HomeStudy = () => {
           </div>
         </div>
       </div> */}
-      <div className={`  h-lvh flex items-center justify-center `}>
+      <div
+        className={` ${season}-gradient h-lvh flex items-center justify-center `}
+      >
         <div
           className={`  ${season}-study-card border-2 shadow-md overflow-hidden rounded-xl max-w-xs`}
         >
@@ -135,9 +138,11 @@ const HomeStudy = () => {
             <div className="uppercase tracking-wide text-sm text-blue-950 font-semibold">
               Card Alphabet
             </div>
-            <h1 className="block mt-1 text-lg leading-tight font-medium text-black cursor-pointer hover:underline">
-              Learn the Alphabet
-            </h1>
+            <Link to="/alphabet">
+              <h1 className="block mt-1 text-lg leading-tight font-medium text-black cursor-pointer hover:underline">
+                Learn the Alphabet
+              </h1>
+            </Link>
             <p className="mt-2 text-slate-500 text-wrap text-justify">
               Explore our alphabet cards to get familiar with the letters, how
               to write them, and how to memorize them.
