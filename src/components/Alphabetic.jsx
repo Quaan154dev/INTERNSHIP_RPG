@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../assets/css/alphabet.module.css";
 import { Modal, Button } from "antd";
 import { useTheme } from "../ThemeContext";
+import { Link } from "react-router-dom";
 const data = [
   {
     han: "ㅏ",
@@ -253,13 +254,13 @@ const Alphabetic = () => {
   };
   return (
     <div className={`${season}-gradient md mx-auto `}>
-      <a href="/home">
+      <Link to="/home">
         <div className="">
           <button className="rounded-sm border-solid border-2 border-sky-500">
             Back home
           </button>
         </div>
-      </a>
+      </Link>
       <div className="flex flex-row">
         <div className="basis-5/12">
           <h1 className={styles["text-header"]}>Nguyên Âm</h1>
