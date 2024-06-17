@@ -793,3 +793,20 @@ canvas {
   filter: blur(5px);
   z-index: -1;
 }
+
+
+.spring-study-card {
+  border: rgb(0, 119, 255) 1px solid !important
+}
+
+.summer-study-card {
+  border: red 1px solid !important
+}
+
+.fall-study-card {
+  border: red 1px solid !important
+}
+
+.winter-study-card {
+  border: red 1px solid !important
+}

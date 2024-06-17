@@ -1,10 +1,10 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useTheme } from "../ThemeContext";
 import { alphabet, pinkBg } from "../assets";
 import paperMp3 from "../assets/mp3/paper.mp3";
 import StarsCanvas from "./canvas/Stars";
 import { useSound } from "../SoundCotext";
+import { useTheme } from "../ThemeContext";
 
 const SeasonalElements = () => {
   const { season } = useTheme();
@@ -19,6 +19,7 @@ const SeasonalElements = () => {
 };
 
 const HomeStudy = () => {
+  const { season, setSeason } = useTheme();
   const [openTag, setOpenTag] = useState("1");
   const audioRef = useRef(new Audio(paperMp3));
   const { isSoundEnabled } = useSound();
@@ -119,8 +120,10 @@ const HomeStudy = () => {
           </div>
         </div>
       </div> */}
-      <div className=" h-lvh flex items-center justify-center">
-        <div className="border-2 shadow-md overflow-hidden rounded-xl max-w-xs">
+      <div className={`  h-lvh flex items-center justify-center `}>
+        <div
+          className={`  ${season}-study-card border-2 shadow-md overflow-hidden rounded-xl max-w-xs`}
+        >
           <div className="w-full overflow-hidden flex items-center justify-center h-full">
             <img
               src={alphabet}
