@@ -1,135 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../assets/css/alphabet.module.css";
 import { Modal, Button } from "antd";
 import { useTheme } from "../ThemeContext";
 import { Link } from "react-router-dom";
-const data = [
-  {
-    han: "ㅏ",
-    viet: "[a]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/17-e1591974055666.png",
-  },
-  {
-    han: "ㅑ",
-    viet: "[ya]",
-    image: "https://www.zila.com.vn/wp-content/uploads/2020/06/hangeul-ya.jpg",
-  },
-  {
-    han: "ㅓ",
-    viet: "[o]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/19-e1591974787377.png",
-  },
-  {
-    han: "ㅕ",
-    viet: "[yo]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/20-e1591974829201.png",
-  },
-  {
-    han: "ㅗ",
-    viet: "[ô]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/21-e1591974852377.png",
-  },
-  {
-    han: "ㅛ",
-    viet: "[yô]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/22-e1591974885256.png",
-  },
-  {
-    han: "ㅜ",
-    viet: "[u]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/23-e1591974920319.png",
-  },
-  {
-    han: "ㅠ",
-    viet: "[yu]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/24-e1591975006593.png",
-  },
-  {
-    han: "ㅡ",
-    viet: "[ư]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/25-e1591975035551.png",
-  },
-  {
-    han: "ㅣ",
-    viet: "[i]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/26-e1591975081978.png",
-  },
-  {
-    han: "ㅐ",
-    viet: "[e]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/27-e1591975115336.png",
-  },
-  {
-    han: "ㅒ",
-    viet: "[ye]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/28-e1591975144539.png",
-  },
-  {
-    han: "ㅔ",
-    viet: "[ê]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/29-e1591975176136.png",
-  },
-  {
-    han: "ㅖ",
-    viet: "[yê]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/30-e1591975232679.png",
-  },
-  {
-    han: "ㅘ",
-    viet: "[wa]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/31-e1591976296510.png",
-  },
-  {
-    han: "ㅙ",
-    viet: "[we]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/32-e1591976337860.png",
-  },
-  {
-    han: "ㅚ",
-    viet: "[uê]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/33-e1591976390764.png",
-  },
-  {
-    han: "ㅝ",
-    viet: "[wo]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/34-1-e1591976421408.png",
-  },
-  {
-    han: "ㅞ",
-    viet: "[wê]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/35-e1591976448751.png",
-  },
-  {
-    han: "ㅟ",
-    viet: "[wi]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/36-e1591976623721.png",
-  },
-  {
-    han: "ㅢ",
-    viet: "[ưi]",
-    image:
-      "https://www.zila.com.vn/wp-content/uploads/2020/06/37-e1591976650682.png",
-  },
-];
+import { data } from "../data/data";
+import { useSound } from "../SoundCotext";
+
 const data2 = [
   {
     han: "ㄱ",
@@ -217,17 +93,33 @@ const data2 = [
 ];
 const Alphabetic = () => {
   const { season } = useTheme();
-
+  const { isSoundEnabled } = useSound();
   const [visible, setVisible] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [soundMp, setSoundMp] = useState(new Audio(""));
   const showModal = (index, source) => {
     setModalData({
       ...source[index],
       index: index,
       source: source,
     });
+    setSoundMp(new Audio(source[index]?.sound));
     setVisible(true);
   };
+  useEffect(() => {
+    const handleClick = (audioRef) => {
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch((e) => {
+          console.error("Sound play failed: ", e);
+        });
+      }
+    };
+    return () => {
+      handleClick(soundMp);
+    };
+  }, [soundMp]);
+
   const nextModal = () => {
     const newModalData = {
       ...modalData.source[modalData.index + 1],
@@ -253,121 +145,145 @@ const Alphabetic = () => {
     setVisible(false);
   };
   return (
-    <div className={`${season}-gradient md mx-auto `}>
-      <Link to="/home">
-        <div className="">
-          <button className="rounded-sm border-solid border-2 border-sky-500">
-            Back home
-          </button>
-        </div>
-      </Link>
-      <div className="flex flex-row">
-        <div className="basis-5/12">
-          <h1 className={styles["text-header"]}>Nguyên Âm</h1>
-          <div className="flex flex-row flex-wrap">
-            {data.map((item, index, source) => {
-              return (
-                <Button
-                  onClick={() => showModal(index, source)}
-                  className={`${styles.alphabet} ${styles.left}`}
-                  key={index}
-                >
-                  {item.han}
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-        <div className="basis-7/12">
-          <h1 className={styles["text-header"]}>Phụ Âm</h1>
-          <div className="flex flex-row flex-wrap">
-            {data2.map((item, index, source) => {
-              return (
-                <Button
-                  key={index}
-                  onClick={() => showModal(index, source)}
-                  className={`${styles.alphabet} ${styles.right}`}
-                >
-                  {item.han}
-                </Button>
-              );
-            })}
-          </div>
-          <h1 className={styles["text-header"]}>Phụ Âm Đặc Biệt</h1>
-          <div className="flex flex-row flex-wrap">
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄲ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄸ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㅃ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㅆ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㅉ</div>
-          </div>
-          <h1 className={styles["text-header"]}>Phụ Âm Kết Hợp</h1>
-          <div className="flex flex-row flex-wrap">
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄳ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄵ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄶ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄺ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄻ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄼ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄽ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄾ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㄿ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㅀ</div>
-            <div className={`${styles.alphabet} ${styles.right}`}>ㅄ</div>
-          </div>
-        </div>
-      </div>
-      <Modal open={visible} footer onClose={closeModal} onCancel={closeModal}>
-        <div className="grid grid-flow-col grid-cols-14">
-          {modalData?.index !== 0 ? (
-            <button
-              type="button"
-              className="fa-solid fa-chevron-left my-auto cursor-pointer text-start max-w-2 p-2"
-              onClick={() => prevModal()}
-            ></button>
-          ) : (
-            <button
-              type="button"
-              className="fa-solid fa-chevron-left my-auto cursor-pointer text-start max-w-2 opacity-50 p-2"
-              disabled={true}
-            ></button>
-          )}
-
-          <div className="grid grid-flow-col col-span-12 gap-1">
-            <div>
-              <h1
-                className="text-center text-9xl bg-black text-white p-4 rounded-lg opacity-80"
-                style={{ width: "180px" }}
-              >
-                {modalData.han}
-              </h1>
-              <pre
-                className="text-center pt-4 font-bold text-lg"
-                style={{ width: "180px" }}
-              >
-                {modalData.viet}
-              </pre>
-            </div>
-            <div>
-              <img
-                src={modalData.image}
-                alt=""
-                style={{ width: "auto", height: "160px", maxWidth: "200px" }}
-                className="mx-auto"
+    <>
+      <audio id="audio" preload="auto"></audio>
+      <div className={`${season}-gradient md mx-auto min-h-lvh`}>
+        <Link to="/home">
+          <button
+            type="button"
+            class="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100  "
+          >
+            <svg
+              class="w-5 h-5 rtl:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
               />
+            </svg>
+            <span>Go home</span>
+          </button>
+        </Link>
+        <div className="flex flex-row gap-2 justify-center w-full">
+          <div className="basis-5/12">
+            <h1 className={`mb-5 ${styles["text-header"]} `}>Nguyên Âm</h1>
+            <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
+              {data.map((item, index, source) => {
+                return (
+                  <Button
+                    onClick={() => showModal(index, source)}
+                    className={`w-24 h-10 text-lg`}
+                    key={index}
+                  >
+                    {item.han}
+                  </Button>
+                );
+              })}
             </div>
           </div>
-          {modalData.index !== modalData?.source?.length - 1 ? (
-            <button
-              className="fa-solid fa-chevron-right my-auto cursor-pointer text-end p-2"
-              onClick={() => nextModal()}
-            ></button>
-          ) : (
-            <button className="fa-solid fa-chevron-right my-auto cursor-pointer text-end opacity-50 p-2"></button>
-          )}
+          <div className="basis-6/12">
+            <h1 className={`mb-5 ${styles["text-header"]} `}>Phụ Âm</h1>
+
+            <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
+              {data2.map((item, index, source) => {
+                return (
+                  <Button
+                    key={index}
+                    onClick={() => showModal(index, source)}
+                    className={`w-24 h-10 text-lg`}
+                  >
+                    {item.han}
+                  </Button>
+                );
+              })}
+            </div>
+            <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
+              Phụ Âm Đặc Biệt
+            </h1>
+
+            <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
+              <Button className={`w-24 h-10 text-lg`}>ㄲ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄸ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㅃ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㅆ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㅉ</Button>
+            </div>
+            <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
+              Phụ Âm Kết Hợp
+            </h1>
+            <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
+              <Button className={`w-24 h-10 text-lg`}>ㄳ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄵ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄶ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄺ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄻ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄼ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄽ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄾ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㄿ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㅀ</Button>
+              <Button className={`w-24 h-10 text-lg`}>ㅄ</Button>
+            </div>
+          </div>
         </div>
-      </Modal>
-    </div>
+        <Modal open={visible} footer onClose={closeModal} onCancel={closeModal}>
+          <div className="grid grid-flow-col grid-cols-14">
+            {modalData?.index !== 0 ? (
+              <button
+                type="button"
+                className="fa-solid fa-chevron-left my-auto cursor-pointer text-start max-w-2 p-2"
+                onClick={() => prevModal()}
+              ></button>
+            ) : (
+              <button
+                type="button"
+                className="fa-solid fa-chevron-left my-auto cursor-pointer text-start max-w-2 opacity-50 p-2"
+                disabled={true}
+              ></button>
+            )}
+
+            <div className="grid grid-flow-col col-span-12 gap-1">
+              <div>
+                <h1
+                  className="text-center text-9xl bg-black text-white p-4 rounded-lg opacity-80"
+                  style={{ width: "180px" }}
+                >
+                  {modalData.han}
+                </h1>
+                <pre
+                  className="text-center pt-4 font-bold text-lg"
+                  style={{ width: "180px" }}
+                >
+                  {modalData.viet}
+                </pre>
+              </div>
+              <div>
+                <img
+                  src={modalData.image}
+                  alt=""
+                  style={{ width: "auto", height: "160px", maxWidth: "200px" }}
+                  className="mx-auto"
+                />
+              </div>
+            </div>
+            {modalData.index !== modalData?.source?.length - 1 ? (
+              <button
+                className="fa-solid fa-chevron-right my-auto cursor-pointer text-end p-2"
+                onClick={() => nextModal()}
+              ></button>
+            ) : (
+              <button className="fa-solid fa-chevron-right my-auto cursor-pointer text-end opacity-50 p-2"></button>
+            )}
+          </div>
+        </Modal>
+      </div>
+    </>
   );
 };
 

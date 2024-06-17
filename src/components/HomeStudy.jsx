@@ -122,10 +122,20 @@ const HomeStudy = () => {
         </div>
       </div> */}
       <div
-        className={` ${season}-gradient h-lvh flex items-center justify-center `}
+        className={`${season}-gradient  h-lvh flex items-center justify-center   `}
       >
         <div
-          className={`  ${season}-study-card border-2 shadow-md overflow-hidden rounded-xl max-w-xs`}
+          className={` border-solid border-2 overflow-hidden rounded-xl max-w-xs shadow-lg ${
+            season === "Spring"
+              ? "shadow-pink-500/50"
+              : season === "Summer"
+              ? "shadow-white-500"
+              : season === "Fall"
+              ? "shadow-yellow-500/50"
+              : season === "Winter"
+              ? "shadow-white-500/50"
+              : ""
+          }`}
         >
           <div className="w-full overflow-hidden flex items-center justify-center h-full">
             <img
@@ -135,15 +145,15 @@ const HomeStudy = () => {
             />
           </div>
           <div className="p-4">
-            <div className="uppercase tracking-wide text-sm text-blue-950 font-semibold">
-              Card Alphabet
-            </div>
+            <div className={`    tracking-wide text-sm   `}>Card Alphabet</div>
             <Link to="/alphabet">
-              <h1 className="block mt-1 text-lg leading-tight font-medium text-black cursor-pointer hover:underline">
+              <h1
+                className={`block mt-1 text-lg leading-tight font-medium uppercase  ${season}-top-text cursor-pointer text-center  font-semibold hover:underline`}
+              >
                 Learn the Alphabet
               </h1>
             </Link>
-            <p className="mt-2 text-slate-500 text-wrap text-justify">
+            <p className={` mt-2 text-slate-500 text-wrap text-justify`}>
               Explore our alphabet cards to get familiar with the letters, how
               to write them, and how to memorize them.
             </p>

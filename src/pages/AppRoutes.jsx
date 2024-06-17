@@ -12,7 +12,6 @@ function AppRoutes() {
     <Routes>
       <Route path="/*" element={<Home></Home>} />
       <Route path="/alphabet" element={<Alphabetic></Alphabetic>} />
-
       <Route path="/home" element={<Home></Home>} />
       <Route path="/learn" element={<LearnHome></LearnHome>} />
       <Route path="/trailer" element={<Scene></Scene>} />

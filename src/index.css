@@ -16,9 +16,11 @@
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
 }
 
 body {
+
   /* cursor: url('./assets/cursor.svg'), auto; */
 }
 
@@ -796,17 +798,17 @@ canvas {
 
 
 .spring-study-card {
-  border: rgb(0, 119, 255) 1px solid !important
+  border: rgb(255, 0, 230) 1px solid !important
 }
 
 .summer-study-card {
-  border: red 1px solid !important
+  border: rgb(34, 255, 0) 1px solid !important
 }
 
 .fall-study-card {
-  border: red 1px solid !important
+  border: rgb(255, 106, 0) 1px solid !important
 }
 
 .winter-study-card {
-  border: red 1px solid !important
+  border: rgb(0, 153, 255) 1px solid !important
 }
