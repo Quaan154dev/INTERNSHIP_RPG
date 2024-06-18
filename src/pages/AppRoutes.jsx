@@ -6,18 +6,18 @@ import LearnHome from "./LearnHome";
 import Scene from "./SadStory";
 import SadStory from "./SadStory/trailer";
 import Alphabetic from "../components/Alphabetic";
+import WordGame from "./WordGame";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/*" element={<Home></Home>} />
       <Route path="/alphabet" element={<Alphabetic></Alphabetic>} />
-
       <Route path="/home" element={<Home></Home>} />
       <Route path="/learn" element={<LearnHome></LearnHome>} />
       <Route path="/trailer" element={<Scene></Scene>} />
+      <Route path="/wordgame" element={<WordGame></WordGame>} />
       <Route path="/trailer/sadstory" element={<SadStory></SadStory>} />
-
       <Route path="404" element={<NotFound />} />
     </Routes>
   );

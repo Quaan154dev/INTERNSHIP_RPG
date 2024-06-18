@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { logoFall, logoSp, logoWinter } from "../assets";
-import { logo } from "../assets";
-import { logoSum } from "../assets";
-import { logoSum_full } from "../assets";
-
+import { logoFall, logoSp, logoWinter, logoSum } from "../assets";
 import { styles } from "../styles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
@@ -12,12 +8,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import navClick from "../assets/mp3/navClick.mp3";
 import Sound from "./Sound";
 import { useSound } from "../SoundCotext";
-import Theme from "./Theme";
 import { useTheme } from "../ThemeContext";
+import { Flex } from "antd";
 
 const Navbar = ({ active }) => {
-  const { season, setSeason } = useTheme();
-
+  const { season } = useTheme();
   const [activeItem, setActiveItem] = useState(active);
   const navClickRef = useRef(new Audio(navClick));
   const { isSoundEnabled } = useSound();
@@ -45,24 +40,19 @@ const Navbar = ({ active }) => {
     }
   }, []);
 
-  let logoImage;
-  switch (season) {
-    case "spring":
-      logoImage = logoSp;
-      break;
-    case "summer":
-      logoImage = logoSum;
-      break;
-    case "fall":
-      logoImage = logoFall;
-      break;
-    case "winter":
-      logoImage = logoWinter;
-      break;
-    default:
-      logoImage = logoSum;
-      break;
-  }
+  const logoImage =
+    season === "spring"
+      ? logoSp
+      : season === "summer"
+      ? logoSum
+      : season === "fall"
+      ? logoFall
+      : logoWinter;
+
+  const logoSize =
+    season === "spring" || season === "fall"
+      ? "max-w-[50px] max-h-[50px]"
+      : "w-[70px] h-[70px]";
 
   return (
     <>
@@ -74,17 +64,13 @@ const Navbar = ({ active }) => {
             to="/home"
             className="flex justify-center self-center items-center"
           >
-            <img
-              src={logoImage}
-              alt="logo"
-              className="object-contain "
-              style={{
-                objectFit: "contain",
-                objectPosition: "center",
-                width: "50px",
-                height: "50px",
-              }}
-            />
+            <div className={`overflow-hidden ${logoSize}`}>
+              <img
+                src={logoImage}
+                alt="logo"
+                className="object-contain object-center w-full h-full"
+              />
+            </div>
             <p
               className={`blueX-text hidden ${styles.sectionSubText} max-md:block`}
             >
@@ -92,8 +78,8 @@ const Navbar = ({ active }) => {
             </p>
           </Link>
 
-          <div className="flex h-min gap-2 items-center ">
-            <div className=" flex h-min items-center ">
+          <div className="flex h-min gap-2 items-center">
+            <div className="flex h-min items-center">
               <Sound />
             </div>
             <div
@@ -101,10 +87,10 @@ const Navbar = ({ active }) => {
             >
               <Link to="/home">
                 <span
-                  className={` ${
+                  className={`${
                     activeItem === "home"
-                      ? " bg-pink-300  cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
-                      : "pl-2 pr-2  cursor-pointer"
+                      ? "bg-pink-300 cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
+                      : "pl-2 pr-2 cursor-pointer"
                   }`}
                   onClick={() => handleMenuItemClick("home")}
                 >
@@ -113,10 +99,10 @@ const Navbar = ({ active }) => {
               </Link>
               <Link to="/learn">
                 <span
-                  className={` ${
+                  className={`${
                     activeItem === "work"
-                      ? " pr-2 pl-2 rounded-2xl cursor-pointer  bg-pink-300 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
-                      : "pr-2 pl-2  cursor-pointer"
+                      ? "pr-2 pl-2 rounded-2xl cursor-pointer bg-pink-300 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
+                      : "pr-2 pl-2 cursor-pointer"
                   }`}
                   onClick={() => handleMenuItemClick("work")}
                 >
@@ -125,10 +111,10 @@ const Navbar = ({ active }) => {
               </Link>
               <Link to="/play">
                 <span
-                  className={` ${
+                  className={`${
                     activeItem === "play"
-                      ? " bg-pink-300  cursor-pointer  rounded-2xl pl-2 pr-2 button-gradient-nav-hover border-solid border-pink-100 border-2 flex h-max "
-                      : "pr-2 pl-2  cursor-pointer"
+                      ? "bg-pink-300 cursor-pointer rounded-2xl pl-2 pr-2 button-gradient-nav-hover border-solid border-pink-100 border-2 flex h-max"
+                      : "pr-2 pl-2 cursor-pointer"
                   }`}
                   onClick={() => handleMenuItemClick("play")}
                 >
@@ -136,7 +122,7 @@ const Navbar = ({ active }) => {
                 </span>
               </Link>
             </div>
-            <span className="hidden max-md:block ">
+            <span className="hidden max-md:block">
               <FontAwesomeIcon icon={faBars} />
             </span>
           </div>

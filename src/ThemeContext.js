@@ -4,14 +4,14 @@ import { logoSumCanvas, logoSpringCanvas, logoFallCanvas } from "./assets";
 const ThemeContext = createContext({
   season: "",
   logo: { logoSumCanvas },
-  setSeason: () => { },
-  setLogo: () => { },
+  setSeason: () => {},
+  setLogo: () => {},
 });
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
   const [season, setSeason] = useState();
-  const [logo, setLogo] = useState({ logoSumCanvas })
+  const [logo, setLogo] = useState({ logoSumCanvas });
   // useEffect(() => {
   //   if (season === "spring") {
   //     setLogo({ logoSumCanvas })

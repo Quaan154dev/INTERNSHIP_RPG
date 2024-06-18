@@ -26,7 +26,6 @@ const TextBanner = () => {
     if (hoverButton) {
       playHoverSound(hoverUrl);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoverButton]);
 
   return (
