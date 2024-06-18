@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { logoFall, logoSp, logoWinter } from "../assets";
-import { logo } from "../assets";
 import { logoSum } from "../assets";
-import { logoSum_full } from "../assets";
 
 import { styles } from "../styles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -12,11 +10,10 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import navClick from "../assets/mp3/navClick.mp3";
 import Sound from "./Sound";
 import { useSound } from "../SoundCotext";
-import Theme from "./Theme";
 import { useTheme } from "../ThemeContext";
 
 const Navbar = ({ active }) => {
-  const { season, setSeason } = useTheme();
+  const { season } = useTheme();
 
   const [activeItem, setActiveItem] = useState(active);
   const navClickRef = useRef(new Audio(navClick));

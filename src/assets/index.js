@@ -1,3 +1,4 @@
+
 import logoSp from "./logo.png";
 import logoSum from "./logoSum.png";
 import logoFall from "./logoFall.png";
@@ -54,7 +55,15 @@ import sound_con_t_t from "./mp3/Alphabet/th.mp3";
 import sound_con_p_p from "./mp3/Alphabet/ph.mp3";
 import sound_con_h_t from "./mp3/Alphabet/h.mp3";
 
+import springAlphabet from "./springalphabet.jpg";
+import summerAlphabet from "./summerAlphabet.jpg";
+import fallAlphabet from "./fallAlphabet.jpg";
+import wintergAlphabet from "./alphabet.jpg";
+
 export {
+    summerAlphabet, fallAlphabet, wintergAlphabet,
+    springAlphabet
+    ,
     sound_con_h_t,
     sound_vowel_a, sound_vowel_ya, sound_vowel_o, sound_vowel_yơ,
     sound_vowel_ơ, sound_vowel_yô, sound_vowel_u, sound_vowel_yu,

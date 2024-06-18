@@ -4,6 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { useSound } from "../SoundCotext";
 import workHoverSound from "../assets/mp3/workSound.mp3";
 import gameClick from "../assets/mp3/gameClick.mp3";
+import { Link } from "react-router-dom";
 
 const TextBanner = () => {
   const { isSoundEnabled } = useSound();
@@ -93,20 +94,24 @@ const TextBanner = () => {
           </p>
 
           <div className="flex gap-8 justify-center">
-            <button
-              className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md max-md:hidden`}
-              onMouseEnter={() => setWorkHover(true)}
-              onMouseLeave={() => setWorkHover(false)}
-            >
-              WORK HARD
-            </button>
-            <button
-              className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
-              onMouseEnter={() => setPlayHover(true)}
-              onMouseLeave={() => setPlayHover(false)}
-            >
-              PLAY HARD
-            </button>
+            <Link to="/learn">
+              <button
+                className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md max-md:hidden`}
+                onMouseEnter={() => setWorkHover(true)}
+                onMouseLeave={() => setWorkHover(false)}
+              >
+                WORK HARD
+              </button>
+            </Link>
+            <Link to="/play">
+              <button
+                className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
+                onMouseEnter={() => setPlayHover(true)}
+                onMouseLeave={() => setPlayHover(false)}
+              >
+                PLAY HARD
+              </button>
+            </Link>
           </div>
 
           {playHover && (
