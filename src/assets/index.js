@@ -1,10 +1,7 @@
 import logoSp from "./logo.png";
-import logoSum_full from "./logoSum_full.png";
 import logoSum from "./logoSum.png";
 import logoFall from "./logoFall.png";
 import logoWinter from "./logoWinter.png"
-import logoFall_full from "./logoFall_full.png";
-import logoSp_full from "./logoSp_full.png";
 
 import cursor from "./cursor.svg"
 import alphabet from "./alphabet.jpg"
@@ -66,9 +63,8 @@ export {
     sound_vowel_wae, sound_vowel_wi,
     sound_vowel_ưi, sound_con_j2_t,
     logoWinterCanvas, logoWinter,
-    logoSp, paperMp3, logoSum, logoFall, logoFall_full, logoSp_full, logoSumCanvas, logoSpringCanvas, logoFallCanvas,
-    cursor, alphabet, pinkBg, logoSum_full, springImg, summerImg, fallImg, winterImg, blossomTree,
+    logoSp, paperMp3, logoSum, logoFall, logoSumCanvas, logoSpringCanvas, logoFallCanvas,
+    cursor, alphabet, pinkBg, springImg, summerImg, fallImg, winterImg, blossomTree,
     sound_con_n, sound_con_t_d, sound_con_r_l, sound_con_m, sound_con_p_b, sound_con_s_t,
     sound_con_ng, sound_con_j_t, sound_con_k_k, sound_con_t_t, sound_con_p_p, sound_con_k_g
-    // sound_vowel_ê,
 }

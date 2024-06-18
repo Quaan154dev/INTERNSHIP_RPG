@@ -137,7 +137,7 @@ const Alphabetic = () => {
               })}
             </div>
             <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
-              Phụ Âm Đặc Biệt
+              Special consonants - 특수 자음
             </h1>
 
             <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
@@ -148,7 +148,7 @@ const Alphabetic = () => {
               <Button className={`w-24 h-10 text-lg`}>ㅉ</Button>
             </div>
             <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
-              Phụ Âm Kết Hợp
+              Consonant Combination - 자음조합
             </h1>
             <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
               <Button className={`w-24 h-10 text-lg`}>ㄳ</Button>
