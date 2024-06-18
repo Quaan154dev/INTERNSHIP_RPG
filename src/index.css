@@ -86,6 +86,15 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+
+.summer2-text-gradient {
+  background: rgb(83, 129, 8);
+  background:linear-gradient(0deg, rgb(97, 126, 49) 11%, rgb(95 154 61) 51%, rgb(104 160 40) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Thu */
 .fall-gradient {
   background: rgb(251, 231, 176);

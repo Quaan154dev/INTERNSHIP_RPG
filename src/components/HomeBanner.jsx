@@ -115,7 +115,7 @@ function Card({ url, ...props }) {
 }
 
 function Banner(props) {
-  const { season, setSeason } = useTheme();
+  const { season } = useTheme();
   const ref = useRef();
   const textures = {
     summer: useTexture(logo.at(1)),
@@ -131,16 +131,12 @@ function Banner(props) {
   useEffect(() => {
     if (season === "summer") {
       setTexture(textures.summer);
-      setSeason("summer");
     } else if (season === "fall") {
       setTexture(textures.fall);
-      setSeason("fall");
     } else if (season === "winter") {
       setTexture(textures.winter);
-      setSeason("winter");
     } else {
       setTexture(textures.default);
-      setSeason("spring");
     }
   }, [
     season,
@@ -170,6 +166,7 @@ function Banner(props) {
 }
 
 const HomeBanner = () => {
+  const { season } = useTheme();
   return (
     <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4">
       <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
@@ -183,16 +180,18 @@ const HomeBanner = () => {
         <Environment preset="dawn" blur={0.5} />
       </Canvas>
       <p
-        className="text-white"
+        className={`${season === 'summer' ? 'summer2-text-gradient' : `${season}-text-gradient `
+          }`}
         style={{
-          position: "relative",
-          // top: 50,
+          position: 'relative',
           left: 200,
-          fontSize: "13px",
+          fontSize: '13px',
+          
         }}
       >
         scroll up/down ...
       </p>
+
       {/* <div className="w-[24px] h-[32px] rounded-xl absolute border-4 border-white-100 flex justify-center items-start p-1">
         <motion.div
           animate={{
@@ -207,13 +206,14 @@ const HomeBanner = () => {
         />
       </div> */}
       <p
-        className="text-white"
-        style={{
-          position: "relative",
-          // top: 50,
-          left: 200,
-          fontSize: "13px",
-        }}
+       className={`${season === 'summer' ? 'summer2-text-gradient' : `${season}-text-gradient `
+       }`}
+     style={{
+       position: 'relative',
+       left: 200,
+       fontSize: '13px',
+       
+     }}
       >
         click to change to sesson
       </p>
