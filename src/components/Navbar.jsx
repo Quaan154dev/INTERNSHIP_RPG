@@ -1,5 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { logoFall, logoSp, logoWinter } from "../assets";
 import { logo } from "../assets";
+import { logoSum } from "../assets";
+import { logoSum_full } from "../assets";
+
 import { styles } from "../styles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
@@ -8,10 +12,13 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import navClick from "../assets/mp3/navClick.mp3";
 import Sound from "./Sound";
 import { useSound } from "../SoundCotext";
+import Theme from "./Theme";
+import { useTheme } from "../ThemeContext";
 
 const Navbar = ({ active }) => {
+  const { season, setSeason } = useTheme();
+
   const [activeItem, setActiveItem] = useState(active);
-  const audioRef = useRef(null);
   const navClickRef = useRef(new Audio(navClick));
   const { isSoundEnabled } = useSound();
   const playHoverSound = (audioRef) => {
@@ -24,12 +31,41 @@ const Navbar = ({ active }) => {
     setActiveItem(item);
     playHoverSound(navClickRef);
   };
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const textElement = textRef.current;
+    const containerElement = containerRef.current;
+
+    if (textElement && containerElement) {
+      const isOverflow = textElement.scrollWidth > containerElement.clientWidth;
+      setIsOverflowing(isOverflow);
+    }
+  }, []);
+
+  let logoImage;
+  switch (season) {
+    case "spring":
+      logoImage = logoSp;
+      break;
+    case "summer":
+      logoImage = logoSum;
+      break;
+    case "fall":
+      logoImage = logoFall;
+      break;
+    case "winter":
+      logoImage = logoWinter;
+      break;
+    default:
+      logoImage = logoSum;
+      break;
+  }
 
   return (
     <>
-      <audio id="audio" ref={audioRef} autoPlay loop>
-        Your browser does not support the audio element.
-      </audio>
       <nav
         className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20`}
       >
@@ -39,9 +75,15 @@ const Navbar = ({ active }) => {
             className="flex justify-center self-center items-center"
           >
             <img
-              src={logo}
+              src={logoImage}
               alt="logo"
-              className="w-9 h-9 object-contain max-md:h-7"
+              className="object-contain "
+              style={{
+                objectFit: "contain",
+                objectPosition: "center",
+                width: "50px",
+                height: "50px",
+              }}
             />
             <p
               className={`blueX-text hidden ${styles.sectionSubText} max-md:block`}
@@ -55,21 +97,15 @@ const Navbar = ({ active }) => {
               <Sound />
             </div>
             <div
-              className={
-                activeItem === "work"
-                  ? "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointer   text-sx max-md:hidden"
-                  : activeItem === "home"
-                  ? "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointe text-sx max-md:hidden"
-                  : "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointer    text-sx max-md:hidden"
-              }
+              className={`w-full flex gap-2 items-center rounded-2xl font-light shadow-lg cursor-pointer text-sx max-md:hidden`}
             >
               <Link to="/home">
                 <span
-                  className={
+                  className={` ${
                     activeItem === "home"
-                      ? " bg-pink-300  cursor-pointer text-sx rounded-2xl  pl-2 pr-2 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
+                      ? " bg-pink-300  cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
                       : "pl-2 pr-2  cursor-pointer"
-                  }
+                  }`}
                   onClick={() => handleMenuItemClick("home")}
                 >
                   Home
@@ -77,26 +113,28 @@ const Navbar = ({ active }) => {
               </Link>
               <Link to="/learn">
                 <span
-                  className={
+                  className={` ${
                     activeItem === "work"
-                      ? " pr-2 pl-2 rounded-2xl  cursor-pointer  bg-pink-300 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
+                      ? " pr-2 pl-2 rounded-2xl cursor-pointer  bg-pink-300 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
                       : "pr-2 pl-2  cursor-pointer"
-                  }
+                  }`}
                   onClick={() => handleMenuItemClick("work")}
                 >
                   Work hard
                 </span>
               </Link>
-              <span
-                className={
-                  activeItem === "play"
-                    ? "  bg-pink-300  cursor-pointer  rounded-2xl pl-2 pr-2 button-gradient-nav-hover border-solid border-pink-100 border-2 flex h-max "
-                    : "pr-2 pl-2  cursor-pointer"
-                }
-                onClick={() => handleMenuItemClick("play")}
-              >
-                Play hard
-              </span>
+              <Link to="/play">
+                <span
+                  className={` ${
+                    activeItem === "play"
+                      ? " bg-pink-300  cursor-pointer  rounded-2xl pl-2 pr-2 button-gradient-nav-hover border-solid border-pink-100 border-2 flex h-max "
+                      : "pr-2 pl-2  cursor-pointer"
+                  }`}
+                  onClick={() => handleMenuItemClick("play")}
+                >
+                  Play hard
+                </span>
+              </Link>
             </div>
             <span className="hidden max-md:block ">
               <FontAwesomeIcon icon={faBars} />

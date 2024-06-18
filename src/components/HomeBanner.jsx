@@ -6,18 +6,30 @@ import {
   useTexture,
 } from "@react-three/drei";
 import * as THREE from "three";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../services/Utils";
 import { Canvas, useFrame } from "react-three-fiber";
 import { easing } from "maath";
+import { useTheme } from "../ThemeContext";
+// import { motion } from "framer-motion";
+import {
+  springImg,
+  summerImg,
+  fallImg,
+  winterImg,
+  logoSumCanvas,
+  logoFallCanvas,
+  logoSpringCanvas,
+  logoWinterCanvas,
+} from "../assets";
+const logo = [
+  logoSpringCanvas,
+  logoSumCanvas,
+  logoFallCanvas,
+  logoWinterCanvas,
+];
 
-import springBg from '../assets/Spring/Spring.jpg';
-import summerBg from '../assets/Summer/Summer.jpg';
-import fallBg from '../assets/Fall/Fall.jpg';
-import winterBg from '../assets/winter/Winter.jpg';
-
-const gameImages = [springBg, summerBg,fallBg,winterBg];
-
+const img = [springImg, summerImg, fallImg, winterImg];
 function Rig(props) {
   const ref = useRef();
   const scroll = useScroll();
@@ -36,10 +48,28 @@ function Rig(props) {
 }
 
 function Carousel({ radius = 1.4, count = 8 }) {
+  const { setSeason } = useTheme();
+  const handleClick = (seasons) => {
+    setSeason(seasons);
+  };
   return Array.from({ length: count }, (_, i) => (
     <Card
       key={i}
-      url={gameImages[i % gameImages.length]}
+      onClick={() => {
+        if (img[i % img.length] === img[0]) {
+          handleClick("spring");
+        }
+        if (img[i % img.length] === img[1]) {
+          handleClick("summer");
+        }
+        if (img[i % img.length] === img[2]) {
+          handleClick("fall");
+        }
+        if (img[i % img.length] === img[3]) {
+          handleClick("winter");
+        }
+      }}
+      url={img[i % img.length]}
       position={[
         Math.sin((i / count) * Math.PI * 2) * radius,
         0,
@@ -53,9 +83,12 @@ function Carousel({ radius = 1.4, count = 8 }) {
 function Card({ url, ...props }) {
   const ref = useRef();
   const [hovered, hover] = useState(false);
-  const pointerOver = (e) => (e.stopPropagation(), hover(true));
+  const pointerOver = (e) => {
+    e.stopPropagation();
+    hover(true);
+  };
   const pointerOut = () => hover(false);
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     easing.damp3(ref.current.scale, hovered ? 1.15 : 1, 0.1, delta);
     easing.damp(
       ref.current.material,
@@ -82,14 +115,42 @@ function Card({ url, ...props }) {
 }
 
 function Banner(props) {
+  const { season } = useTheme();
   const ref = useRef();
-  const texture = useTexture("/logo.png");
+  const textures = {
+    summer: useTexture(logo.at(1)),
+    default: useTexture(logo.at(0)),
+    fall: useTexture(logo.at(2)),
+    winter: useTexture(logo.at(3)),
+  };
+
+  const [texture, setTexture] = useState(textures.default);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   const scroll = useScroll();
+
+  useEffect(() => {
+    if (season === "summer") {
+      setTexture(textures.summer);
+    } else if (season === "fall") {
+      setTexture(textures.fall);
+    } else if (season === "winter") {
+      setTexture(textures.winter);
+    } else {
+      setTexture(textures.default);
+    }
+  }, [
+    season,
+    textures.default,
+    textures.fall,
+    textures.summer,
+    textures.winter,
+  ]);
+
   useFrame((_, delta) => {
     ref.current.material.time.value += Math.abs(scroll.delta) * 4;
     ref.current.material.map.offset.x += delta / 2;
   });
+
   return (
     <mesh ref={ref} {...props}>
       <cylinderGeometry args={[1.6, 1.6, 0.14, 128, 16, true]} />
@@ -106,20 +167,53 @@ function Banner(props) {
 
 const HomeBanner = () => {
   return (
-    <>
-      <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4 ">
-        <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
-          <fog attach="fog" args={["#e6213b", 8.5, 12]} />
-          <ScrollControls pages={10} infinite>
-            <Rig rotation={[0, 0, 0.1]}>
-              <Carousel />
-            </Rig>
-            <Banner position={[0, -0.1, 0]} />
-          </ScrollControls>
-          <Environment preset="dawn" blur={0.5} />
-        </Canvas>
-      </div>
-    </>
+    <div className="w-2/4 h-3/4 max-md:w-full max-md:h-2/4">
+      <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
+        <fog attach="fog" args={["#cfe4e5", 8.5, 12]} />
+        <ScrollControls pages={10} infinite>
+          <Rig rotation={[0, 0, 0.1]}>
+            <Carousel />
+          </Rig>
+          <Banner position={[0, -0.1, 0]} />
+        </ScrollControls>
+        <Environment preset="dawn" blur={0.5} />
+      </Canvas>
+      <p
+        className="text-white"
+        style={{
+          position: "relative",
+          // top: 50,
+          left: 200,
+          fontSize: "13px",
+        }}
+      >
+        scroll up/down ...
+      </p>
+      {/* <div className="w-[24px] h-[32px] rounded-xl absolute border-4 border-white-100 flex justify-center items-start p-1">
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+          className="w-1 h-2 rounded-full bg-white-100"
+        />
+      </div> */}
+      <p
+        className="text-white"
+        style={{
+          position: "relative",
+          // top: 50,
+          left: 200,
+          fontSize: "13px",
+        }}
+      >
+        click to change to sesson
+      </p>
+    </div>
   );
 };
 

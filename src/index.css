@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,12 +13,15 @@
 
   font-family: 'Times New Roman', Times, serif;
 
-  cursor: url('./assets/cursor.svg'),
-    auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+body {
+  /* cursor: url('./assets/cursor.svg'), auto; */
+}
+
 
 .hash-span {
   margin-top: -100px;
@@ -26,48 +31,123 @@
 
 .background {
   background: #F6E2F3;
-  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, rgb(213, 170, 200) 96%);
+  background: linear-gradient(0deg, rgba(56, 95, 190, 1) 2%, rgba(229, 235, 242, 1) 42%, #FFBE98 96%);
 }
 
-.pink-gradient {
+/* xuan */
+.spring-gradient {
   background: rgb(126, 151, 212);
-  background: linear-gradient(0deg, rgb(102, 130, 201) 0%, rgba(229, 235, 242, 1) 43%, #ff030333 96%);
+  background: linear-gradient(0deg, rgb(234, 215, 234) 0%, rgba(229, 235, 242, 1) 43%, #ff03bc39 96%);
 }
 
-.purple-gradient {
-  background: rgb(251, 222, 255);
-  background: linear-gradient(0deg, rgba(251, 222, 255, 1) 10%, rgba(217, 201, 226, 1) 46%, rgba(191, 186, 236, 1) 100%);
-}
-
-.blue-gradient {
-  background: rgb(126, 151, 212);
-  background: linear-gradient(0deg, rgba(126, 151, 212, 1) 0%, rgba(229, 235, 242, 1) 43%, rgba(246, 153, 153, 1) 96%);
-}
-
-.violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(-90deg,
-      #804dee 0%,
-      rgba(60, 51, 80, 0) 100%);
-}
-
-.green-pink-gradient {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-}
-
-
-.red-text {
-  background-color: #c51414eb;
+.spring-top-text {
+  background-color: #7c0d49eb;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.blue-text {
-  background-color: #17187ce7;
+.spring-bottom-text {
+  background-color: #5b103be7;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spring-text-gradient {
+  background: rgb(83, 129, 8);
+  background: linear-gradient(0deg, rgb(94, 28, 59) 11%, rgb(194, 118, 193) 51%, rgb(206, 67, 148) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ha */
+.summer-gradient {
+  background: rgb(127, 177, 122);
+  background: linear-gradient(0deg, rgba(127, 177, 122, 1) 0%, rgba(255, 254, 221, 1) 44%, rgba(255, 254, 161, 1) 95%);
+}
+
+
+.summer-top-text {
+  background-color: #466127;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.summer-bottom-text {
+  background-color: #24611f;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.summer-text-gradient {
+  background: rgb(83, 129, 8);
+  background: linear-gradient(0deg, rgb(97, 126, 49) 11%, rgb(146, 194, 118) 51%, rgb(141, 206, 67) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Thu */
+.fall-gradient {
+  background: rgb(251, 231, 176);
+  background: linear-gradient(0deg, rgba(251, 231, 176, 1) 0%, rgba(255, 249, 241, 1) 50%, rgba(255, 162, 96, 1) 95%);
+}
+
+
+.fall-top-text {
+  background-color: #9b471b;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fall-bottom-text {
+  background-color: #9f6338;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fall-text-gradient {
+  background: rgb(83, 129, 8);
+  background: linear-gradient(0deg, rgb(210, 119, 58) 11%, rgb(235, 182, 117) 51%, rgb(235, 102, 18) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Đông */
+.winter-gradient {
+
+  /* background: rgb(135, 206, 235);
+  background: linear-gradient(0deg, rgb(115, 183, 210) 0%, rgba(173, 216, 230, 1) 50%, rgba(224, 255, 255, 1) 95%); */
+
+  background: rgb(141, 201, 211);
+  background: linear-gradient(0deg, rgb(146, 210, 221) 0%, rgb(255, 254, 252) 50%, rgba(224, 255, 255, 1) 95%);
+}
+
+.winter-top-text {
+  background-color: #275b61;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.winter-bottom-text {
+  background-color: #1f4561;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.winter-text-gradient {
+  background: rgb(8, 91, 129);
+  background: linear-gradient(0deg, rgb(49, 73, 126) 11%, rgb(118, 180, 194) 51%, rgb(67, 164, 206) 70%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -87,23 +167,22 @@
   -webkit-text-fill-color: transparent;
 }
 
-.pink-text-gradient {
-
-  background: linear-gradient(to top, #4346f7e7,
-      #ec0000eb);
+.spring-text-gradient {
+  background: linear-gradient(to top, #d66289e7,
+      #ec0053a2);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.pink2-text-gradient {
+.spring2-text-gradient {
   background: #F6E2F3;
   background: -webkit-linear-gradient(to top,
       #F6E2F3,
-      #678ffc);
+      #f267fc);
   background: linear-gradient(to top,
-      #ec0000,
-      #fc6767);
+      #ec006a,
+      #fc67c5);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -223,7 +302,7 @@ canvas {
 }
 
 .button-gradient-nav-hover {
-  background: linear-gradient(to right, #beb4ff, #f31313);
+  background: linear-gradient(to right, #7185e817, #da6f6f62);
   background-size: 200% 200%;
 }
 
@@ -237,15 +316,191 @@ canvas {
   }
 }
 
-.button-gradient-hover {
-  background: linear-gradient(to top, #4346f7cd,
+@keyframes summer-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(78, 127, 78, 0.301);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(255, 0, 150, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 0, 150, 0);
+  }
+}
+
+@keyframes spring-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(254, 250, 252, 0.516);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(255, 0, 150, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(217, 11, 114, 0);
+  }
+}
+
+@keyframes fall-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(254, 251, 250, 0.516);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(255, 0, 150, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(217, 11, 114, 0);
+  }
+}
+
+@keyframes winter-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(254, 250, 252, 0.516);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(0, 64, 255, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(32, 11, 217, 0);
+  }
+}
+
+.summer-animated-button {
+  animation: summer-pulse 1.5s infinite;
+}
+
+.spring-animated-button {
+  animation: spring-pulse 1.5s infinite;
+}
+
+.fall-animated-button {
+  animation: fall-pulse 1.5s infinite;
+}
+
+.winter-animated-button {
+  animation: winter-pulse 1.5s infinite;
+}
+
+.spring-button-gradient-hover {
+  background: linear-gradient(to top, #f743a0cd,
       #ec00009d);
-  background-size: 200% 200%;
+  color: #fff;
+}
+
+.summer-button-gradient-hover {
+  background: rgb(76, 190, 56);
+  background: linear-gradient(90deg, rgb(156, 220, 114) 0%, rgb(215, 255, 121) 50%, rgb(179, 214, 114) 100%);
+  color: #04340b;
   transition: background-position 0.5s ease-in-out
 }
 
-.button-gradient-hover:hover {
+.fall-button-gradient-hover {
+  background: rgb(76, 190, 56);
+  background: linear-gradient(90deg, rgb(220, 201, 114) 0%, rgb(215, 255, 121) 50%, rgb(179, 214, 114) 100%);
+  color: #04340b;
+  transition: background-position 0.5s ease-in-out
+}
+
+.winter-button-gradient-hover {
+  background: rgb(56, 85, 190);
+  background: linear-gradient(90deg, rgb(114, 185, 220) 0%, rgb(121, 159, 255) 50%, rgb(114, 166, 214) 100%);
+  color: #04340b;
+  transition: background-position 0.5s ease-in-out
+}
+
+.spring-button-gradient-hover:hover {
   animation: gradientMove 1s forwards;
+}
+
+.summer-button-gradient-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.fall-button-gradient-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.winter-button-gradient-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.spring-cloud-text {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 0;
+  white-space: nowrap;
+  color: rgb(61, 20, 71) !important
+}
+
+
+.spring-button-gradient-hover:hover~.spring-cloud-text {
+  opacity: 1;
+}
+
+.summer-cloud-text {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 0;
+  white-space: nowrap;
+  color: rgb(24, 71, 20) !important
+}
+
+
+.summer-button-gradient-hover:hover~.summer-cloud-text {
+  opacity: 1;
+}
+
+.fall-cloud-text {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 0;
+  white-space: nowrap;
+  color: rgb(24, 71, 20) !important
+}
+
+
+.fall-button-gradient-hover:hover~.fall-cloud-text {
+  opacity: 1;
+}
+
+.winter-cloud-text {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 0;
+  white-space: nowrap;
+  color: rgb(20, 28, 71) !important
+}
+
+
+.winter-button-gradient-hover:hover~.winter-cloud-text {
+  opacity: 1;
 }
 
 .active-item {
@@ -264,52 +519,143 @@ canvas {
   }
 }
 
-.button-gradient-left-hover {
-  background: linear-gradient(to right, transparent, #072170);
+.spring-button-gradient-left-hover {
+  background: linear-gradient(to right, transparent, #70075d8a);
   background-size: 200% 100%;
   transition: background-position 2s;
 }
 
-.button-gradient-left-hover:hover {
+.spring-button-gradient-left-hover:hover {
   animation: gradientMove 1s forwards;
 }
 
-
-@keyframes gradientMove {
-  0% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-.button-gradient-right-hover {
-  background: linear-gradient(to right, transparent, #e84141);
+.spring-button-gradient-right-hover {
+  background: linear-gradient(to right, transparent, #700748);
   background-size: 200% 100%;
   transition: background-position 2s;
 }
 
-.button-gradient-right-hover:hover {
+.spring-button-gradient-right-hover:hover {
   animation: gradientMove 1s forwards;
 }
 
-.cloud-text {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
-  z-index: 10;
-  bottom: 0;
-  white-space: nowrap;
+
+.summer-button-gradient-left-hover {
+  background: linear-gradient(to right, transparent, #85c007);
+
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.summer-button-gradient-left-hover:hover {
+  animation: gradientMove 1s forwards;
+  color: rgb(24, 64, 24);
+  border: 2px solid rgb(24, 64, 24);
+}
+
+.summer-button-gradient-right-hover {
+  background: linear-gradient(to right, transparent, #85c007);
+
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.summer-button-gradient-right-hover:hover {
+  animation: gradientMove 1s forwards;
+  color: rgb(24, 64, 24);
+  border: 2px solid rgb(24, 64, 24);
+}
+
+.fall-button-gradient-left-hover {
+  background: linear-gradient(to right, transparent, #ec7119);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.fall-button-gradient-left-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.fall-button-gradient-right-hover {
+  background: linear-gradient(to right, transparent, #ec7119);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.fall-button-gradient-right-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.winter-button-gradient-left-hover {
+  background: linear-gradient(to right, transparent, #0f198379);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.winter-button-gradient-left-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.winter-button-gradient-right-hover {
+  background: linear-gradient(to right, transparent, #0f198379);
+  background-size: 200% 100%;
+  transition: background-position 2s;
+}
+
+.winter-button-gradient-right-hover:hover {
+  animation: gradientMove 1s forwards;
+}
+
+.winter-button-gradient-left-text {
+  color: #072170;
+}
+
+.spring-button-gradient-left-text {
+  color: #700765;
+}
+
+.fall-button-gradient-left-text {
+  color: #842d0a;
+}
+
+.summer-button-gradient-left-text {
+  color: #103c13;
+
+}
+
+.summer-button-gradient-right-text {
+  color: #103c13;
+
+}
+
+.winter-button-gradient-right-text {
+  color: #083344;
+}
+
+.spring-button-gradient-right-text {
+  color: #70073a;
+}
+
+.fall-button-gradient-right-text {
+  color: #842d0a;
 }
 
 
-.button-gradient-hover:hover~.cloud-text {
-  opacity: 1;
+.winter-button-gradient-none-text {
+  color: #083344;
 }
 
+.spring-button-gradient-none-text {
+  color: #3d0635;
+}
 
+.fall-button-gradient-none-text {
+  color: #70071c;
+}
+
+.summer-button-gradient-none-text {
+  color: #174205;
+}
 
 .work-text {
   transition: opacity 0.3s ease-in-out;
@@ -320,4 +666,130 @@ canvas {
 
 .button-gradient-hover:hover~.work-text {
   opacity: 1;
+}
+
+#awan {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #efefef;
+  background: url(./assets/bg.png) center top repeat-x;
+
+  /* cursor: url('./assets/cursorBlue.svg'), */
+  /* auto !important; */
+  animation: awan-animasi 10s linear infinite;
+  -ms-animation: awan-animasi 10s linear infinite;
+  -moz-animation: awan-animasi 10s linear infinite;
+  -webkit-animation: awan-animasi 10s linear infinite;
+  z-index: 0;
+}
+
+.summer-button-gradient-right-note {
+  color: rgb(24, 71, 20)
+}
+
+.summer-button-gradient-left-note {
+  color: rgb(24, 71, 20)
+}
+
+#awanPink {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #efefef;
+  background: url(./assets/bgPink.png) center top repeat-x;
+
+  animation: awan-animasi 10s linear infinite;
+  -ms-animation: awan-animasi 10s linear infinite;
+  -moz-animation: awan-animasi 10s linear infinite;
+  -webkit-animation: awan-animasi 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@-ms-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+}
+
+@-moz-keyframes awan-animasi {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+
+}
+
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrolling-text-animation 10s linear infinite;
+}
+
+@keyframes scrolling-text-animation {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.learn {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.learn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/background/learn_winter.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
 }

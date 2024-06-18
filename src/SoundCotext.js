@@ -5,7 +5,7 @@ const SoundContext = createContext();
 export const useSound = () => useContext(SoundContext);
 
 export const SoundProvider = ({ children }) => {
-    const [isSoundEnabled, setIsSoundEnabled] = useState(true);
+    const [isSoundEnabled, setIsSoundEnabled] = useState(false);
 
     const toggleSound = () => {
         setIsSoundEnabled(prevState => !prevState);
