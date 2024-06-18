@@ -115,7 +115,7 @@ function Card({ url, ...props }) {
 }
 
 function Banner(props) {
-  const { season } = useTheme();
+  const { season, setSeason } = useTheme();
   const ref = useRef();
   const textures = {
     summer: useTexture(logo.at(1)),
@@ -131,12 +131,16 @@ function Banner(props) {
   useEffect(() => {
     if (season === "summer") {
       setTexture(textures.summer);
+      setSeason("summer");
     } else if (season === "fall") {
       setTexture(textures.fall);
+      setSeason("fall");
     } else if (season === "winter") {
       setTexture(textures.winter);
+      setSeason("winter");
     } else {
       setTexture(textures.default);
+      setSeason("spring");
     }
   }, [
     season,
