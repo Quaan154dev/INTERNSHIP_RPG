@@ -9,7 +9,7 @@ const WordGame = () => {
 
   return (
     <div className="pt-8 h-screen flex overflow-hidden flex-col">
-      {/* <ParticlesComponent id="particles" /> */}
+      <ParticlesComponent id="particles" />
       <Heading type="h1" text="Word guessing game" />
       <div className="flex flex-wrap flex-col mt-6 items-center justify-center">
         <Board board={board} />
