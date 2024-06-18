@@ -32,6 +32,9 @@ import soundNextLevelEffect from '../assets/mp3/nextLevel.mp3';
 import soundFailureEffect from '../assets/mp3/failure.mp3';
 
 import {Howl} from 'howler';
+import { StarsCanvas } from "../components/canvas";
+import { useTheme } from "../ThemeContext";
+
 
 const Game = () => {
   
@@ -45,9 +48,11 @@ const Game = () => {
   const [isOnSupport, setIsOnSupport] = useState(false);
   const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
   const [backgroundMusic, setBackgroundMusic] = useState(null);
+  const { season,setSeason } = useTheme();
 
 
   const backgrounds = [springBg, summerBg, fallBg, winterBg];
+  const outsidebackgrounds = ["spring", "summer", "fall", "winter"];
   const ballImages = {
     [springBg]: [cherryBlossom, kimbap, bikimbap],
     [summerBg]: [fireworks, music, patbingsu],
@@ -149,6 +154,7 @@ const Game = () => {
   }, []);
 
   useEffect(() => {
+   
     if (backgroundMusic) {
       if (isPaused) {
         backgroundMusic.pause();
@@ -167,6 +173,7 @@ const Game = () => {
     const drawBackground = () => {
       const bg = new Image();
       bg.src = backgrounds[currentBackgroundIndex];
+      setSeason(outsidebackgrounds[currentBackgroundIndex]);
       ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
     };
 
@@ -306,9 +313,11 @@ const Game = () => {
     };
   });
 
+  
   return (
-    <div className="relative w-full h-full flex justify-center">
-      <canvas id="gameCanvas" ref={canvasRef} width="600" height="600" className="relative bg-white rounded-lg shadow-2xl mt-10"></canvas>
+    <div className={`${season}-gradient relative w-full h-full flex justify-center `}>
+       <StarsCanvas />
+      <canvas id="gameCanvas" ref={canvasRef} width="600" height="600" className="relative bg-white rounded-lg shadow-card mt-12 mb-10"></canvas>
       <div className="absolute top-2 left-0 right-0 mx-auto flex justify-between w-full px-4">
         <div className="bg-gray-800 text-white p-2 rounded-md">Score: {score}</div>
         <div className="bg-gray-800 text-white p-2 rounded-md">Health: {health}</div>
