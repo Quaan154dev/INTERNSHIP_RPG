@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,9 +15,11 @@
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
 }
 
 body {
+
   /* cursor: url('./assets/cursor.svg'), auto; */
 }
 
@@ -87,6 +88,15 @@ body {
 .summer-text-gradient {
   background: rgb(83, 129, 8);
   background: linear-gradient(0deg, rgb(97, 126, 49) 11%, rgb(146, 194, 118) 51%, rgb(141, 206, 67) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.summer2-text-gradient {
+  background: rgb(83, 129, 8);
+  background: linear-gradient(0deg, rgb(97, 126, 49) 11%, rgb(95 154 61) 51%, rgb(104 160 40) 70%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -796,19 +806,19 @@ canvas {
 
 
 .spring-study-card {
-  border: rgb(0, 119, 255) 1px solid !important
+  border: rgb(255, 0, 230) 1px solid !important
 }
 
 .summer-study-card {
-  border: red 1px solid !important
+  border: rgb(34, 255, 0) 1px solid !important
 }
 
 .fall-study-card {
-  border: red 1px solid !important
+  border: rgb(255, 106, 0) 1px solid !important
 }
 
 .winter-study-card {
-  border: red 1px solid !important
+  border: rgb(0, 153, 255) 1px solid !important
 }
 
 span {

@@ -24,7 +24,6 @@ const LearnHome = () => {
         <Navbar active="work" />
         <HomeStudy />
       </div>
-      {/* <AnimatePresence mode="wait">{<Transition />}</AnimatePresence> */}
     </>
   );
 };
