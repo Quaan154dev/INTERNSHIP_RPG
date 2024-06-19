@@ -8,6 +8,7 @@ import { useSound } from "../SoundCotext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import { data2 } from "../data/consonant";
+import { StarsCanvas } from "./canvas";
 
 const Alphabetic = () => {
   const { season } = useTheme();
@@ -77,6 +78,7 @@ const Alphabetic = () => {
   };
   return (
     <>
+      <StarsCanvas />
       <audio ref={audioRef} id="audio" preload="auto"></audio>
       <div className={`${season}-gradient md mx-auto min-h-lvh`}>
         <Link to="/learn">
