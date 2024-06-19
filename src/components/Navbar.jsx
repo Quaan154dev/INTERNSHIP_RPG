@@ -41,9 +41,6 @@ const Navbar = ({ active }) => {
     }
   };
 
-  const textRef = useRef(null);
-  const containerRef = useRef(null);
-
   const [backgroundColor, setBackgroundColor] = useState("");
   const [borderColor, setBorderColor] = useState("");
 
@@ -93,9 +90,7 @@ const Navbar = ({ active }) => {
 
   return (
     <>
-      <nav
-        className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20 `}
-      >
+      <nav className={` w-full flex items-center fixed top-4 z-20 p-1 `}>
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
           <Link
             to="/home"

@@ -96,12 +96,6 @@ const Choice = () => {
           You can learn by game
         </span>
       )}
-      <span
-        className={`hidden ${season}-button-gradient-left-note work-text opacity-100 absolute mt-8  max-md:block `}
-        style={{ fontSize: "12px", left: "50%", transform: "translateX(-50%)" }}
-      >
-        Choose one to learn by Card or by Game
-      </span>
     </>
   );
 };

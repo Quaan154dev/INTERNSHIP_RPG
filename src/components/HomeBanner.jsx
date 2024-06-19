@@ -215,7 +215,7 @@ const HomeBanner = () => {
           click to change to season
         </p>
       </div>
-      <div className="hidden absolute max-md:block top-1/2  right-10 ">
+      {/* <div className="hidden absolute max-md:block top-1/2  right-10 ">
         <p
           className={`${season}2-text-gradient hidden max-md:block max-md:text-sm`}
           style={{
@@ -224,7 +224,7 @@ const HomeBanner = () => {
         >
           Click to change to season
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };
