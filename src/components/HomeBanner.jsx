@@ -180,13 +180,11 @@ const HomeBanner = () => {
         <Environment preset="dawn" blur={0.5} />
       </Canvas>
       <p
-        className={`${season === 'summer' ? 'summer2-text-gradient' : `${season}-text-gradient `
-          }`}
+        className={`${season}2-text-gradient `}
         style={{
-          position: 'relative',
+          position: "relative",
           left: 200,
-          fontSize: '13px',
-          
+          fontSize: "13px",
         }}
       >
         scroll up/down ...
@@ -206,14 +204,12 @@ const HomeBanner = () => {
         />
       </div> */}
       <p
-       className={`${season === 'summer' ? 'summer2-text-gradient' : `${season}-text-gradient `
-       }`}
-     style={{
-       position: 'relative',
-       left: 200,
-       fontSize: '13px',
-       
-     }}
+        className={`${season}2-text-gradient `}
+        style={{
+          position: "relative",
+          left: 200,
+          fontSize: "13px",
+        }}
       >
         click to change to sesson
       </p>
