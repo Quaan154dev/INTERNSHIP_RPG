@@ -195,7 +195,33 @@ body {
       #f267fc);
   background: linear-gradient(to top,
       #ec006a,
-      #fc67c5);
+      #180611);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fall2-text-gradient {
+  background: #F6E2F3;
+  background: -webkit-linear-gradient(to top,
+      #F6E2F3,
+      #f267fc);
+  background: linear-gradient(to top,
+      #ec5e00,
+      #000000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.winter2-text-gradient {
+  background: #F6E2F3;
+  background: -webkit-linear-gradient(to top,
+      #F6E2F3,
+      #f267fc);
+  background: linear-gradient(to top,
+      #1697a3,
+      #180611);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -822,4 +848,14 @@ canvas {
 
 .winter-study-card {
   border: rgb(0, 153, 255) 1px solid !important
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
