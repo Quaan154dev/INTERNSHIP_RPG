@@ -20,7 +20,7 @@ function AppRoutes() {
       <Route path="/trailer" element={<Scene></Scene>} />
       <Route path="/wordgame" element={<WordGame></WordGame>} />
       <Route path="/play" element={<PlayHard></PlayHard>} />
-      <Route path="/trailer/sadstory" element={<SadStory></SadStory>} />
+      <Route path="/sadstory" element={<SadStory></SadStory>} />
       <Route path="404" element={<NotFound />} />
     </Routes>
   );
