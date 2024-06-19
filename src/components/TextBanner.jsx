@@ -7,9 +7,9 @@ const TextBanner = () => {
   const { season, setSeason } = useTheme();
   const [workHover, setWorkHover] = useState(false);
   const [playHover, setPlayHover] = useState(false);
-  const handleClick = (season) => {
-    setSeason(season);
-  };
+  // const handleClick = (season) => {
+  //   setSeason(season);
+  // };
   const hoverUrl = useRef(new Audio(hoverSound));
   const [hoverButton, setHoverButton] = useState(false);
   const { isSoundEnabled } = useSound();
@@ -41,11 +41,14 @@ const TextBanner = () => {
 
             <div className={`${season}-text-gradient flex items-center gap-5`}>
               <span
-                className={`${season}-text-gradient flex flex-col justify-start text-xs items-start max-md:hidden`}
+                className={`${season}-text-gradient flex flex-col justify-start text-xs items-start max-md:hidden text-center`}
               >
-                <span>TO</span>
-                <span>LEARN</span>
-                <span>THE</span>
+                <span>
+                  Hello I'm <br />
+                  <span>KOREAN</span>
+                </span>
+                {/* <span>LEARN</span>
+                <span>THE</span> */}
               </span>
               <span
                 className={`h-full text-6xl`}

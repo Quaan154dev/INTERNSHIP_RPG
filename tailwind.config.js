@@ -37,6 +37,10 @@ module.exports = {
       },
       screens: {
         xs: "450px",
+        sm: "640px",
+        md: "768px",
+        lg: "960px",
+        xl: "1200px",
       },
       animation: {
         "header-nav": "slidedown 2s cubic-bezier(.19,1,.22,1) forwards",
