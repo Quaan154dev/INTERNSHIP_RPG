@@ -97,12 +97,13 @@ body {
 
 
 .summer2-text-gradient {
-  background: rgb(83, 129, 8);
-  background: linear-gradient(0deg, rgb(97, 126, 49) 11%, rgb(95 154 61) 51%, rgb(104 160 40) 70%);
+  background: rgb(24, 38, 3);
+  background: linear-gradient(0deg, rgb(61, 79, 32) 11%, rgb(50, 82, 32) 51%, rgb(71, 114, 21) 70%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 /* Thu */
 .fall-gradient {
