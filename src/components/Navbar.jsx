@@ -90,7 +90,9 @@ const Navbar = ({ active }) => {
 
   return (
     <>
-      <nav className={` w-full flex items-center fixed top-4 z-20 p-1 `}>
+      <nav
+        className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20 max-md:px-1 `}
+      >
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
           <Link
             to="/home"
