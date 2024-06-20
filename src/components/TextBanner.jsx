@@ -5,6 +5,8 @@ import { useSound } from "../SoundCotext";
 import workHoverSound from "../assets/mp3/workSound.mp3";
 import gameClick from "../assets/mp3/gameClick.mp3";
 import { Link } from "react-router-dom";
+import Statistics from "./Statistics";
+import Choice from "./Choice";
 
 const TextBanner = () => {
   const { isSoundEnabled } = useSound();
@@ -79,57 +81,11 @@ const TextBanner = () => {
             ALPHABET
           </span>
         </h1>
-        <div className="flex flex-col gap-5 justify-center">
-          <p
-            className={
-              workHover
-                ? `text-xs italic ${season}-button-gradient-left-text`
-                : playHover
-                ? `text-xs italic ${season}-button-gradient-right-text`
-                : `text-xs italic ${season}-button-gradient-none-text`
-            }
-          >
-            Choose the method you want to choose to learn
-          </p>
-
-          <div className="flex gap-8 justify-center">
-            <Link to="/learn">
-              <button
-                className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md max-md:hidden`}
-                onMouseEnter={() => setWorkHover(true)}
-                onMouseLeave={() => setWorkHover(false)}
-              >
-                WORK HARD
-              </button>
-            </Link>
-            <Link to="/play">
-              <button
-                className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
-                onMouseEnter={() => setPlayHover(true)}
-                onMouseLeave={() => setPlayHover(false)}
-              >
-                PLAY HARD
-              </button>
-            </Link>
-          </div>
-
-          {playHover && (
-            <span
-              className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24`}
-              style={{ fontSize: "12px" }}
-            >
-              You can learn by game
-            </span>
-          )}
-
-          {workHover && (
-            <span
-              className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24`}
-              style={{ fontSize: "12px" }}
-            >
-              You can learn by game
-            </span>
-          )}
+        <div className="md:hidden max-md:flex font-mono ">
+          <Statistics feedbackCount={26} visited={43} />
+        </div>
+        <div className="flex flex-col  justify-center gap-5   max-md:hidden">
+          <Choice />
         </div>
       </div>
     </div>

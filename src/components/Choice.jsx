@@ -1,63 +1,102 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from "react";
+import hoverSound from "../assets/mp3/hoverSound.mp3";
 import { useTheme } from "../ThemeContext";
-
-const Choice = ({ feedbackCount, visited }) => {
-  const [_, setVisited] = useState(0);
-  const [feedback, setFeedback] = useState(0);
+import { useSound } from "../SoundCotext";
+import workHoverSound from "../assets/mp3/workSound.mp3";
+import gameClick from "../assets/mp3/gameClick.mp3";
+import { Link } from "react-router-dom";
+const Choice = () => {
+  const { isSoundEnabled } = useSound();
   const { season } = useTheme();
 
-  const visitedProps = useSpring({
-    from: { number: 1 },
-    to: { number: visited },
-    config: { duration: 1000 },
-    reset: true,
-  });
-  const feedbackProps = useSpring({
-    from: { number: 1 },
-    to: { number: feedbackCount },
-    config: { duration: 1000 },
-    reset: true,
-  });
+  const hoverUrl = useRef(new Audio(hoverSound));
+  const clickAudioRef = useRef(new Audio(workHoverSound));
+  const gameClickRef = useRef(new Audio(gameClick));
 
+  const [hoverButton, setHoverButton] = useState(false);
+  const [workHover, setWorkHover] = useState(false);
+  const [playHover, setPlayHover] = useState(false);
+
+  const playHoverSound = (audioRef) => {
+    if (audioRef.current && isSoundEnabled) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch((e) => {
+        console.error("Sound play failed: ", e);
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (workHover) {
+      playHoverSound(clickAudioRef);
+    }
+  }, [workHover]);
+
+  useEffect(() => {
+    if (playHover) {
+      playHoverSound(gameClickRef);
+    }
+  }, [playHover]);
+
+  useEffect(() => {
+    if (hoverButton) {
+      playHoverSound(hoverUrl);
+    }
+  }, [hoverButton]);
   return (
-    <div className="font-mono i fixed bottom-0 left-1/2 transform -translate-x-1/2 flex  justify-center items-center">
-      <button
-        className={`${season}-bottom-text flex gap-2 justify-center items-center`}
-        onClick={() => setVisited(visited)}
-        style={{
-          padding: "10px 20px",
-          border: "none",
-          cursor: "pointer",
-        }}
+    <>
+      <p
+        className={
+          workHover
+            ? `text-xs italic ${season}-button-gradient-left-text max-md:hidden`
+            : playHover
+            ? `text-xs italic ${season}-button-gradient-right-text max-md:hidden`
+            : `text-xs italic ${season}-button-gradient-none-text max-md:hidden`
+        }
       >
-        <animated.span className="font-bold text-4xl">
-          {visitedProps.number.to((n) => Math.floor(n))}
-        </animated.span>
-        <p className="flex flex-col text-sm">
-          <span className=" text-sm">visited the</span>
-          <span className=" text-sm"> website</span>
-        </p>
-      </button>
-      <button
-        className={`  ${season}-bottom-text flex gap-2 justify-center items-center`}
-        onClick={() => setFeedback(feedbackCount)}
-        style={{
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        <animated.span className="font-bold text-4xl ">
-          {feedbackProps.number.to((n) => Math.floor(n))}
-        </animated.span>{" "}
-        <p className={` flex flex-col text-sm items-center justify-center`}>
-          <span className=" text-sm">gave</span>
-          <span className=" text-sm"> feedback</span>
-        </p>
-      </button>
-    </div>
+        Choose the method you want to choose to learn
+      </p>
+
+      <div className="flex gap-8 justify-center ">
+        <Link to="/learn">
+          <button
+            className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md `}
+            onMouseEnter={() => setWorkHover(true)}
+            onMouseLeave={() => setWorkHover(false)}
+          >
+            WORK HARD
+          </button>
+        </Link>
+        <Link to="/play">
+          <button
+            className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
+            onMouseEnter={() => setPlayHover(true)}
+            onMouseLeave={() => setPlayHover(false)}
+          >
+            PLAY HARD
+          </button>
+        </Link>
+      </div>
+
+      {playHover && (
+        <span
+          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
+          style={{ fontSize: "12px" }}
+        >
+          You can learn by game
+        </span>
+      )}
+
+      {workHover && (
+        <span
+          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
+          style={{ fontSize: "12px" }}
+        >
+          You can learn by game
+        </span>
+      )}
+    </>
   );
 };
 
