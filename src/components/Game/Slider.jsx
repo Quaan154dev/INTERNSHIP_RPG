@@ -15,21 +15,21 @@ const Slider = () => {
   const [slides, setSlides] = useState([
     {
       img: game1,
-      title: "Word game",
+      title: "Word Game",
       description:
         " Word game is a game that helps people improve their new words by guessing a new word.",
       link: "/trailer2",
     },
     {
       img: anh2,
-      title: "Sad story",
+      title: "Sad Story",
       description:
         "Weld letters will fall from above and the player must enter the correct letters on the screen.",
       link: "/sadstory",
     },
     {
       img: anh3,
-      title: "Bubble game",
+      title: "Bubble Game",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
     },
