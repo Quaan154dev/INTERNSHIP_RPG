@@ -134,7 +134,11 @@ const Keyboard = () => {
             </span>
           )}
           {row.split(" ").map((letter, letterIndex) => (
-            <div className="flex items-center" key={letterIndex}>
+            <div
+              style={{ margin: "5px" }}
+              className="flex items-center"
+              key={letterIndex}
+            >
               <Key
                 letter={keyMap[letter]}
                 onClick={() => handleClick(letter)}

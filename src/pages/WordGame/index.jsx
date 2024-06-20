@@ -6,15 +6,15 @@ import ParticlesComponent from "../../components/Particles/Particles";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
-
+import "./styles.css";
 const WordGame = () => {
   const { season } = useTheme();
   const board = useSelector((state) => state.board.board);
 
   return (
-    <div className={`w-full ${season}-gradient h-full relative`}>
+    <div id="wordGame" className={`w-full ${season}-gradient h-full relative`}>
       <div className="pt-8 h-screen flex overflow-hidden flex-col">
-        <Heading type="h1" text="Word guessing game" />
+        {/* <Heading type="h1" text="Word guessing game" /> */}
         <Link to="/play">
           <button
             type="button"

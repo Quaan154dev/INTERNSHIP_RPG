@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-
 const Square = (props) => {
   const { val, squareIdx } = props;
   // Redux state
@@ -24,7 +23,17 @@ const Square = (props) => {
 
   return (
     <motion.div animate={val ? "filled" : "unfilled"} variants={variants}>
-      <div className={`square ${status}`}>{val}</div>
+      <div id="wordGame">
+        <div
+          style={{
+            border: "1px solid blue",
+          }}
+          className={`square 
+         ${status}`}
+        >
+          {val}
+        </div>
+      </div>
     </motion.div>
   );
 };
