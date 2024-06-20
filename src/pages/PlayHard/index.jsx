@@ -6,7 +6,6 @@ function PlayHard() {
   return (
     <>
       <Navbar active="play" />
-
       <div id="wrapper">
         <Slider />
       </div>

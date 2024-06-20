@@ -10,6 +10,9 @@ import {
   resetGame,
 } from "../../redux/BoardSlice";
 import wordList from "../../words.json";
+import Swal from "sweetalert2";
+import winner from "../../assets/GameImage/winner.jpeg";
+import error from "../../assets/GameImage/err.jpeg";
 
 const rows = ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m"];
 
@@ -61,13 +64,23 @@ const Keyboard = () => {
     dispatch(decPos());
     dispatch(setBoard(newBoard));
   };
+  const hanleInva = () => {
+    Swal.fire({
+      title: "Error",
+      text: "Oops! Something went wrong. Please try again.",
+      imageUrl: error,
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+    });
+  };
 
   const clickEnter = () => {
     console.log("correct:", correctWord);
     if (position % 4 !== 0 || position === 0) return;
 
     if (!allWords.includes(board4Words)) {
-      alert("Invalid word");
+      hanleInva();
       return;
     }
 
@@ -83,10 +96,21 @@ const Keyboard = () => {
           : "wrong";
       dispatch(setStatus({ index, status }));
     }
+    const hanleWin = () => {
+      Swal.fire({
+        title: "Success",
+        text: "Congratulations! You've won the game! Well done!",
+        imageUrl: winner,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+    };
 
     if (board4Words === correctWord) {
-      alert("Congratulations! You guessed the word!");
+      // alert("Congratulations! You guessed the word!");
       dispatch(resetGame());
+      hanleWin();
     } else {
       dispatch(incRow());
     }
