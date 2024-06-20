@@ -37,6 +37,7 @@
     "react-three-fiber": "^6.0.13",
     "react-tsparticles": "^2.12.2",
     "redux": "^5.0.1",
+    "sweetalert2": "^11.12.0",
     "three": "^0.164.1",
     "tsparticles": "^3.4.0",
     "tsparticles-engine": "^2.12.0",
