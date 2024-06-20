@@ -8,8 +8,7 @@ import SadStory from "./SadStory/trailer";
 import Alphabetic from "../components/Alphabetic";
 import WordGame from "./WordGame";
 import PlayHard from "./PlayHard";
-import { AnimatePresence } from "framer-motion";
-
+import Trailer from "./WordGame/trailer";
 function AppRoutes() {
   return (
     <Routes>
@@ -20,6 +19,7 @@ function AppRoutes() {
       <Route path="/trailer" element={<Scene></Scene>} />
       <Route path="/wordgame" element={<WordGame></WordGame>} />
       <Route path="/play" element={<PlayHard></PlayHard>} />
+      <Route path="/trailer2" element={<Trailer></Trailer>} />
       <Route path="/sadstory" element={<SadStory></SadStory>} />
       <Route path="404" element={<NotFound />} />
     </Routes>

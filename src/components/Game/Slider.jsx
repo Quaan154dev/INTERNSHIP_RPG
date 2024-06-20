@@ -18,7 +18,7 @@ const Slider = () => {
       title: "Word game",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
-      link: "/wordgame",
+      link: "/trailer2",
     },
     {
       img: anh2,
