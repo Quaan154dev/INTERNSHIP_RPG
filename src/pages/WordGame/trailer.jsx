@@ -106,22 +106,24 @@ export default function Scene() {
 
   return (
     <div
-      className={`relative w-[1500px] h-[800px] overflow-hidden ${season}-gradient `}
+      className={` ${season}-gradient relative w-full h-full overflow-hidden  `}
     >
       <div className="fixed top-0 left-0 w-full p-4 bg-white/70 backdrop-blur-md flex justify-between items-center">
         <div>{storyText}</div>
-        <button
-          onClick={handleNext}
-          className="bg-blue-500 text-white p-2 rounded"
-        >
-          Next
-        </button>
-        <button
-          onClick={handleSkip}
-          className="bg-blue-500 text-white p-2 rounded"
-        >
-          Skip
-        </button>
+        <div>
+          <button
+            onClick={handleNext}
+            className="bg-blue-500 text-white p-2 rounded mr-2"
+          >
+            Next
+          </button>
+          <button
+            onClick={handleSkip}
+            className="bg-blue-500 text-white p-2 rounded"
+          >
+            Skip
+          </button>
+        </div>
       </div>
       <img
         src={boySrc}

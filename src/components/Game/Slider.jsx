@@ -3,7 +3,7 @@ import anh1 from "../../assets/GameImage/img1.jpg";
 import anh2 from "../../assets/GameImage/img2.jpg";
 import anh3 from "../../assets/GameImage/img3.jpg";
 import anh4 from "../../assets/GameImage/img4.jpg";
-import game1 from "../../assets/GameImage/game1.jpeg";
+import game1 from "../../assets/GameImage/img1.jpg";
 import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ const Slider = () => {
       img: game1,
       title: "Word game",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
+        " Word game is a game that helps people improve their new words by guessing a new word.",
       link: "/trailer2",
     },
     {
@@ -29,7 +29,7 @@ const Slider = () => {
     },
     {
       img: anh3,
-      title: "Slide 03",
+      title: "Bubble game",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
     },
