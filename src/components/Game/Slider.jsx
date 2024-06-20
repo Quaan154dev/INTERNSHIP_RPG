@@ -24,7 +24,7 @@ const Slider = () => {
       title: "Sad story",
       description:
         "Weld letters will fall from above and the player must enter the correct letters on the screen.",
-      link: "/game",
+      link: "/sadstory",
     },
     {
       img: anh3,
