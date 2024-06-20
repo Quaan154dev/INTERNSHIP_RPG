@@ -23,7 +23,7 @@ const Slider = () => {
       img: anh2,
       title: "Sad story",
       description:
-        "Weld letters will fall from above and the player must enter the correct letters on the screen. If the letter falls through the range of the screen, the player will lose points",
+        "Weld letters will fall from above and the player must enter the correct letters on the screen.",
       link: "/game",
     },
     {
