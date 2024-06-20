@@ -106,11 +106,10 @@ import React, { useEffect, useState } from 'react';
 import sadBoyImage from '../../assets/sadstory/sadboy.png';
 import boyImage from '../../assets/sadstory/boy.png';
 import studyingBoyImage from '../../assets/sadstory/girl.png';
-import buddhaImage from '../../assets/sadstory/boy.png';
+import buddhaImage from '../../assets/sadstory/but.png';
 import gameImage from '../../assets/sadstory/boy.png';
-import HighExamImage from '../../assets/sadstory/flower.png';
-import LowExamImage from '../../assets/sadstory/flower.png';
-
+import HighExamImage from '../../assets/sadstory/highTest.png';
+import LowExamImage from '../../assets/sadstory/lowTest.png';
 
 export default function Scene() {
   const [lowExamStyles, setlowExamStyles] = useState('opacity-0 right-[-20%]');
@@ -122,7 +121,9 @@ export default function Scene() {
   const [examVisible, setExamVisible] = useState(false);
   const [storyText, setStoryText] = useState('');
   const [boyStyle, setBoyStyle] = useState({ left: '10%', opacity: 1 });
+  const [chatBoxMessage, setChatBoxMessage] = useState('');
   const [chatBoxOpacity, setChatBoxOpacity] = useState('opacity-0');
+  const [chatBoxPosition, setChatBoxPosition] = useState({ bottom: 'auto', left: 'auto' });
 
   useEffect(() => {
     setTimeout(() => {
@@ -149,40 +150,60 @@ export default function Scene() {
     }, 4000);
 
     setTimeout(() => {
-            setChatBoxOpacity('opacity-100');
-      }, 4500);
-
-      setTimeout(() => {
-        setBoyStyle({ left: '30%', opacity: 0 });
-        setBuddhaVisible(false);
-        setChatBoxOpacity('opacity-0');
-      }, 6000);
-
-      setTimeout(() => {
-        setStoryText('Cậu bé chăm chỉ học tại...');
-        setGameVisible(true)
-      }, 7000);
-      
+      setChatBoxMessage('Tại sao con khóc?');
+      setChatBoxPosition({ bottom: '50%', left: '55%' }); // Position above Buddha's head
+      setChatBoxOpacity('opacity-100');
+    }, 4500);
 
     setTimeout(() => {
-      setStoryText('Một thời gian sau ... ');
-      setGameVisible(false)
-      setBoySrc(boyImage);
-      setBoyStyle({opacity: 1 });
-    }, 7500);
+      setChatBoxOpacity('opacity-0');
+    }, 6000);
 
     setTimeout(() => {
-      sethighExamStyles('right-[58%] bottom-[20%] opacity-100');
+      setChatBoxMessage('Con bị điểm thấp');
+      setChatBoxPosition({ bottom: '50%', left: '20%' }); // Position above Boy's head
+      setChatBoxOpacity('opacity-100');
+    }, 6500);
+
+    setTimeout(() => {
+      setChatBoxOpacity('opacity-0');
+    }, 8000);
+
+    setTimeout(() => {
+      setChatBoxMessage('Vậy con hãy học tại ...');
+      setChatBoxPosition({ bottom: '50%', left: '55%' }); // Position above Buddha's head
+      setChatBoxOpacity('opacity-100');
     }, 8500);
 
     setTimeout(() => {
+      setBoyStyle({ left: '30%', opacity: 0 });
+      setBuddhaVisible(false);
+      setChatBoxOpacity('opacity-0');
+    }, 10000);
+
+    setTimeout(() => {
+      setStoryText('Cậu bé chăm chỉ học tại...');
+      setGameVisible(true);
+    }, 10500);
+
+    setTimeout(() => {
+      setStoryText('Một thời gian sau ... ');
+      setGameVisible(false);
+      setBoySrc(boyImage);
+      setBoyStyle({ opacity: 1 });
+    }, 11000);
+
+    setTimeout(() => {
+      sethighExamStyles('right-[58%] bottom-[20%] opacity-100');
+    }, 12000);
+
+    setTimeout(() => {
       setStoryText('Cậu có một cuộc thi và đạt được điểm cao');
-    }, 9000);
+    }, 12500);
+
     setTimeout(() => {
       setBoyStyle({ left: '30%', opacity: 1 });
-    }, 9500);
-
-    
+    }, 13000);
 
   }, []);
 
@@ -191,14 +212,13 @@ export default function Scene() {
       <div className="fixed top-0 left-0 w-full p-4 bg-white/70 backdrop-blur-md">
         {storyText}
       </div>
-      <img src={boySrc} alt='Boy' className="absolute bottom-[10%] transition-all duration-2000 w-[15%]" style={boyStyle}  />
-      {buddhaVisible && <img src={buddhaImage} alt='Buddha' className="absolute bottom-[10%] left-[45%] transition-all duration-2000 opacity-100 w-[15%]" />}
-      <div className={`absolute bottom-[50%] right-[35%] bg-white p-2.5 rounded-lg shadow-lg transition-all duration-2000 ${chatBoxOpacity}`}>Hãy học tại .....</div>
-      <img src={LowExamImage} alt='Flower' className={`absolute transition-all duration-2000 ${lowExamStyles} w-[10%]`} />
+      <img src={boySrc} alt='Boy' className="absolute bottom-[10%] transition-all duration-2000 w-[15%]" style={boyStyle} />
+      {buddhaVisible && <img src={buddhaImage} alt='Buddha' className="absolute bottom-[10%] left-[45%] transition-all duration-2000 opacity-100 w-[30%]" />}
+      <div className={`absolute bg-white p-2.5 rounded-lg shadow-lg transition-all duration-2000 ${chatBoxOpacity}`} style={chatBoxPosition}>{chatBoxMessage}</div>
+      <img src={LowExamImage} alt='Flower' className={`absolute transition-all duration-2000 ${lowExamStyles} w-[5%]`} />
       {gameVisible && <img src={gameImage} alt='Game' className="absolute bottom-[30%] left-[50%] transition-all duration-2000 opacity-100 w-[15%]" />}
       {studyVisible && <img src={studyingBoyImage} alt='Studying' className="absolute bottom-[10%] left-[30%] transition-all duration-2000 opacity-100 w-[15%]" />}
-      <img src={HighExamImage} alt='Flower' className={`absolute transition-all duration-2000 ${highExamStyles} w-[10%]`} />
-   
+      <img src={HighExamImage} alt='Flower' className={`absolute transition-all duration-2000 ${highExamStyles} w-[5%]`} />
     </div>
   );
 }
