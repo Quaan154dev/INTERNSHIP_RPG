@@ -5,6 +5,7 @@ import Board from "../../components/Board/Board";
 import ParticlesComponent from "../../components/Particles/Particles";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../ThemeContext";
+import { StarsCanvas } from "../../components/canvas";
 
 const WordGame = () => {
   const { season } = useTheme();
@@ -19,7 +20,7 @@ const WordGame = () => {
         <ParticlesComponent id="particles" />
         <Heading type="h1" text="Word guessing game" />
         <div
-          className={`${season}-gradientflex flex-wrap flex-col mt-6 items-center justify-center`}
+          className={`spring-gradient flex flex-wrap flex-col mt-6 items-center justify-center`}
         >
           <Board board={board} />
         </div>
