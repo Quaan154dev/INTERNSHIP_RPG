@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import navClick from "../assets/mp3/navClick.mp3";
 import Sound from "./Sound";
 import { useTheme } from "../ThemeContext";
@@ -109,11 +109,6 @@ const Navbar = ({ active }) => {
                 height: "30px",
               }}
             />
-            {/* <p
-              className={` text-${border}-900 hidden ${styles.sectionSubText} max-md:block whitespace-nowrap`}
-            >
-              You can Learn & Play the Korean alphabet
-            </p> */}
           </Link>
 
           <div className="flex h-min gap-2 items-center">
@@ -146,7 +141,7 @@ const Navbar = ({ active }) => {
               <span
                 className={`${
                   activeItem === "play"
-                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    ? `bg-${borderColor} cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
                     : "pr-2 pl-2 cursor-pointer"
                 }`}
                 onClick={() => handleMenuItemClick("play", "/play")}
@@ -154,9 +149,6 @@ const Navbar = ({ active }) => {
                 Play hard
               </span>
             </div>
-            {/* <span className="hidden max-md:block" onClick={toggleModal}>
-              <FontAwesomeIcon icon={faBars} />
-            </span> */}
           </div>
         </div>
       </nav>
@@ -195,6 +187,7 @@ const Navbar = ({ active }) => {
               >
                 Work hard
               </span>
+
               <span
                 className={`${
                   activeItem === "play"
