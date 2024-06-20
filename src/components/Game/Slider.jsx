@@ -7,6 +7,7 @@ import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { gameImage } from "../../assets";
 
 const Slider = () => {
   const { season } = useTheme();
@@ -22,8 +23,8 @@ const Slider = () => {
       img: anh2,
       title: "Sad story",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
-      link: "/sadstory",
+        "Weld letters will fall from above and the player must enter the correct letters on the screen. If the letter falls through the range of the screen, the player will lose points",
+      link: "/game",
     },
     {
       img: anh3,
