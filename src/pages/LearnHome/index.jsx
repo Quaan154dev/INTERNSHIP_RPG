@@ -1,8 +1,6 @@
 import React from "react";
 import HomeStudy from "../../components/HomeStudy";
 import Navbar from "../../components/Navbar";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
 
 const LearnHome = () => {
   return (
