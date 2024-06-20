@@ -16,6 +16,8 @@ import logoSumCanvas from "./logo/logoSum.png"
 import logoSpringCanvas from "./logo/logoSp.png"
 import logoFallCanvas from "./logo/logoFall.png"
 import logoWinterCanvas from "./logo/logoWinter.png"
+import gameImage from "./sadstory/gameImage.png"
+
 import blossomTree from "./models/blossomTree.glb"
 
 import sound_vowel_a from "./mp3/Alphabet/a.mp3"
@@ -73,7 +75,7 @@ export {
     sound_vowel_ưi, sound_con_j2_t,
     logoWinterCanvas, logoWinter,
     logoSp, paperMp3, logoSum, logoFall, logoSumCanvas, logoSpringCanvas, logoFallCanvas,
-    cursor, alphabet, pinkBg, springImg, summerImg, fallImg, winterImg, blossomTree,
+    cursor, alphabet, pinkBg, springImg, summerImg, fallImg, winterImg, blossomTree, gameImage,
     sound_con_n, sound_con_t_d, sound_con_r_l, sound_con_m, sound_con_p_b, sound_con_s_t,
     sound_con_ng, sound_con_j_t, sound_con_k_k, sound_con_t_t, sound_con_p_p, sound_con_k_g
 }

@@ -530,7 +530,7 @@ canvas {
 }
 
 .spring-button-gradient-left-hover {
-  background: linear-gradient(to right, transparent, #70075d8a);
+  background: linear-gradient(to right, transparent, #9d468d8a);
   background-size: 200% 100%;
   transition: background-position 2s;
 }
@@ -540,7 +540,7 @@ canvas {
 }
 
 .spring-button-gradient-right-hover {
-  background: linear-gradient(to right, transparent, #700748);
+  background: linear-gradient(to right, transparent, #9d468d8a);
   background-size: 200% 100%;
   transition: background-position 2s;
 }
@@ -705,6 +705,30 @@ canvas {
 
 .summer-button-gradient-left-note {
   color: rgb(24, 71, 20)
+}
+
+.spring-button-gradient-right-note {
+  color: rgb(38, 11, 40)
+}
+
+.spring-button-gradient-left-note {
+  color: rgb(26, 7, 23)
+}
+
+.winter-button-gradient-right-note {
+  color: rgb(21, 25, 78)
+}
+
+.winter-button-gradient-left-note {
+  color: rgb(21, 25, 78)
+}
+
+.fall-button-gradient-right-note {
+  color: rgb(48, 23, 13)
+}
+
+.fall-button-gradient-left-note {
+  color: rgb(48, 23, 13)
 }
 
 #awanPink {

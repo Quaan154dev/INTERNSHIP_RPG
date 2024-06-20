@@ -399,9 +399,15 @@ const Game = () => {
 
           <button
             className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
-            onClick={() => (window.location.href = "./trailer/sadstory")}
+            onClick={() => (window.location.href = "./sadstory")}
           >
             Trailer
+          </button>
+          <button
+            className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
+            onClick={() => (window.location.href = "./home")}
+          >
+            Home
           </button>
         </div>
       )}
