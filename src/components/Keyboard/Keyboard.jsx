@@ -1,7 +1,14 @@
 import React from "react";
 import Key from "../Key/Key";
 import { useSelector, useDispatch } from "react-redux";
-import { decPos, incRow, setBoard, incPos } from "../../redux/BoardSlice";
+import {
+  decPos,
+  incRow,
+  setBoard,
+  incPos,
+  setStatus,
+  resetGame,
+} from "../../redux/BoardSlice";
 import wordList from "../../words.json";
 
 const rows = ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m"];
@@ -43,12 +50,12 @@ const Keyboard = () => {
   const dispatch = useDispatch();
 
   let allWords = wordList.words;
-  let board5Words = `${board[position - 5]}${board[position - 4]}${
-    board[position - 3]
-  }${board[position - 2]}${board[position - 1]}`.toLowerCase();
+  let board4Words = `${board[position - 4]}${board[position - 3]}${
+    board[position - 2]
+  }${board[position - 1]}`.toLowerCase();
 
   const clickBack = () => {
-    if (Math.floor((position - 1) / 5) < row) return;
+    if (Math.floor((position - 1) / 4) < row) return;
     const newBoard = [...board];
     newBoard[position - 1] = "";
     dispatch(decPos());
@@ -57,20 +64,36 @@ const Keyboard = () => {
 
   const clickEnter = () => {
     console.log("correct:", correctWord);
-    if (!allWords.includes(board5Words)) {
+    if (position % 4 !== 0 || position === 0) return;
+
+    if (!allWords.includes(board4Words)) {
       alert("Invalid word");
       return;
     }
-    if (position % 5 === 0 && position !== 0) {
-      dispatch(incRow());
+
+    // Check the word and set statuses
+    for (let i = 0; i < 4; i++) {
+      const index = position - 4 + i;
+      const letter = board[index];
+      const status =
+        correctWord[i] === letter
+          ? "correct"
+          : correctWord.includes(letter)
+          ? "almost"
+          : "wrong";
+      dispatch(setStatus({ index, status }));
     }
-    if (position === 30 && allWords.includes(board5Words)) {
-      alert("The word is: " + correctWord);
+
+    if (board4Words === correctWord) {
+      alert("Congratulations! You guessed the word!");
+      dispatch(resetGame());
+    } else {
+      dispatch(incRow());
     }
   };
 
   const handleClick = (letter) => {
-    if (position >= 30) return;
+    if (position >= 24) return;
     const newBoard = [...board];
     newBoard[position] = keyMap[letter];
     dispatch(setBoard(newBoard));

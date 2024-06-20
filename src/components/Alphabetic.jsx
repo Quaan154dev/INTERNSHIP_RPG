@@ -8,6 +8,7 @@ import { useSound } from "../SoundCotext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import { data2 } from "../data/consonant";
+import { StarsCanvas } from "./canvas";
 
 const Alphabetic = () => {
   const { season } = useTheme();
@@ -77,15 +78,16 @@ const Alphabetic = () => {
   };
   return (
     <>
+      <StarsCanvas />
       <audio ref={audioRef} id="audio" preload="auto"></audio>
       <div className={`${season}-gradient md mx-auto min-h-lvh`}>
         <Link to="/learn">
           <button
             type="button"
-            class="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100  "
+            class=" flex items-center justify-center w-1/2 px-1 py-1 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100  "
           >
             <svg
-              class="w-5 h-5 rtl:rotate-180"
+              class="w-3 h-3 rtl:rotate-180"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -103,7 +105,11 @@ const Alphabetic = () => {
         </Link>
         <div className="flex flex-row gap-2 justify-center w-full">
           <div className="basis-5/12">
-            <h1 className={`mb-5 ${styles["text-header"]} `}>Vowel - 모음</h1>
+            <h1
+              className={`mb-5 ${styles["text-header"]} ${season}2-text-gradient`}
+            >
+              Vowel - 모음
+            </h1>
             <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">
               {data.map((item, index, source) => {
                 return (
@@ -119,7 +125,9 @@ const Alphabetic = () => {
             </div>
           </div>
           <div className="basis-6/12">
-            <h1 className={`mb-5 ${styles["text-header"]} `}>
+            <h1
+              className={`mb-5 ${styles["text-header"]} ${season}2-text-gradient `}
+            >
               Consonant - 자음
             </h1>
 
@@ -136,7 +144,9 @@ const Alphabetic = () => {
                 );
               })}
             </div>
-            <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
+            <h1
+              className={`mb-5 mt-5 ${styles["text-header"]} ${season}2-text-gradient `}
+            >
               Special consonants - 특수 자음
             </h1>
 
@@ -147,7 +157,9 @@ const Alphabetic = () => {
               <Button className={`w-24 h-10 text-lg`}>ㅆ</Button>
               <Button className={`w-24 h-10 text-lg`}>ㅉ</Button>
             </div>
-            <h1 className={`mb-5 mt-5 ${styles["text-header"]} `}>
+            <h1
+              className={`mb-5 mt-5 ${styles["text-header"]} ${season}2-text-gradient `}
+            >
               Consonant Combination - 자음조합
             </h1>
             <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 ">

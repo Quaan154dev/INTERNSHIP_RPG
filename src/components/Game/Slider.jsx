@@ -1,108 +1,73 @@
-import React, { useState, useEffect } from "react";
-import img1 from "../../assets/GameImage/img1.jpg";
-import img2 from "../../assets/GameImage/img2.jpg";
-import img3 from "../../assets/GameImage/img3.jpg";
-import img4 from "../../assets/GameImage/img4.jpg";
-import { MdKeyboardBackspace } from "react-icons/md";
-
-const data = [
-  {
-    id: 1,
-    image: img2,
-    type: "NATURE",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.",
-  },
-  {
-    id: 2,
-    image: img3,
-    type: "PLANT",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.",
-  },
-  {
-    id: 3,
-    image: img4,
-    type: "NATURE",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.",
-  },
-];
+import React, { useState } from "react";
+import anh1 from "../../assets/GameImage/img1.jpg";
+import anh2 from "../../assets/GameImage/img2.jpg";
+import anh3 from "../../assets/GameImage/img3.jpg";
+import anh4 from "../../assets/GameImage/img4.jpg";
+import { useTheme } from "../../ThemeContext";
 
 const Slider = () => {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState("");
+  const { season, setSeason } = useTheme();
+  const [slides, setSlides] = useState([
+    {
+      img: anh1,
+      title: "Slide 0100000",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
+    },
+    {
+      img: anh2,
+      title: "Slide 02",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
+    },
+    {
+      img: anh3,
+      title: "Slide 03",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
+    },
+  ]);
 
   const nextSlide = () => {
-    setDirection("next");
-    setCurrent(current === data.length - 1 ? 0 : current + 1);
+    setSlides((prevSlides) => {
+      const newSlides = [...prevSlides];
+      newSlides.push(newSlides.shift());
+      return newSlides;
+    });
   };
 
   const prevSlide = () => {
-    setDirection("prev");
-    setCurrent(current === 0 ? data.length - 1 : current - 1);
+    setSlides((prevSlides) => {
+      const newSlides = [...prevSlides];
+      newSlides.unshift(newSlides.pop());
+      return newSlides;
+    });
   };
 
-  useEffect(() => {
-    const slider = document.querySelector(".slider");
-    const handleAnimationEnd = () => {
-      slider.classList.remove("next", "prev");
-    };
-    slider.addEventListener("animationend", handleAnimationEnd);
-
-    return () => {
-      slider.removeEventListener("animationend", handleAnimationEnd);
-    };
-  }, [direction]);
-
-  useEffect(() => {
-    const slider = document.querySelector(".slider");
-    if (direction) {
-      slider.classList.add(direction);
-    }
-  }, [current, direction]);
-
   return (
-    <div className="slider">
-      <div className="list">
-        {data.map((item, index) => (
+    <div className={`containers ${season}-gradient `}>
+      <div className="slidered">
+        {slides.map((slide, index) => (
           <div
-            className={`item ${index === current ? "active" : ""}`}
             key={index}
+            className="slides"
+            style={{ backgroundImage: `url(${slide.img})` }}
           >
-            {index === current && (
-              <>
-                <img src={item.image} alt="" />
-                <div className="content">
-                  <div className="title">MAGIC SLIDER</div>
-                  <div className="type">{item.type}</div>
-                  <div className="description">{item.description}</div>
-                  <div className="button">
-                    <button>SEE MORE</button>
-                  </div>
-                </div>
-              </>
-            )}
+            <div className="contented">
+              <h2 className="text-red-400 text-xs">{slide.title}</h2>
+              <p>{slide.description}</p>
+            </div>
+            <div className="px-4 py-2 grid-cols-2 bg-gray-200 rounded-3xl">
+              <button className="border-none text-xl  text-black font-poppins font-medium cursor-pointer transition duration-400 tracking-wider">
+                SEE MORE
+              </button>
+            </div>
           </div>
         ))}
       </div>
-
-      <div className="thumbnail">
-        {data.map((item, index) => (
-          <div className="item" key={index}>
-            <h1>bsh</h1>
-            <img src={item.image} alt="" />
-          </div>
-        ))}
-      </div>
-
-      <div className="nextPrevArrows">
-        <button className="prev" onClick={prevSlide}>
-          -
-        </button>
-        <button className="next" onClick={nextSlide}>
-          +
-        </button>
+      <div className="buttons">
+        <span className="prev" onClick={prevSlide}></span>
+        <span className="next" onClick={nextSlide}></span>
       </div>
     </div>
   );
