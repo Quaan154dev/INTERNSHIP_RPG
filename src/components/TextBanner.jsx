@@ -19,7 +19,6 @@ const TextBanner = () => {
   const [hoverButton, setHoverButton] = useState(false);
   const [workHover, setWorkHover] = useState(false);
   const [playHover, setPlayHover] = useState(false);
-
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
       audioRef.current.currentTime = 0;

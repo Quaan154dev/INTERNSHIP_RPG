@@ -4,14 +4,14 @@ import { logoSumCanvas } from "./assets";
 const ThemeContext = createContext({
   season: "spring",
   logo: { logoSumCanvas },
-  setSeason: () => { },
-  setLogo: () => { },
+  setSeason: () => {},
+  setLogo: () => {},
 });
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
   const [season, setSeason] = useState("spring");
-  const [logo, setLogo] = useState({ logoSumCanvas })
+  const [logo, setLogo] = useState({ logoSumCanvas });
 
   return (
     <ThemeContext.Provider value={{ season, setSeason, logo, setLogo }}>
