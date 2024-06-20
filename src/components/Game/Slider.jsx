@@ -7,7 +7,7 @@ import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
 
 const Slider = () => {
-  const { season, setSeason } = useTheme();
+  const { season } = useTheme();
   const [slides, setSlides] = useState([
     {
       img: anh1,
@@ -61,7 +61,7 @@ const Slider = () => {
                 index === 0 ? "contented opacity-100" : "contented opacity-0"
               }`}
             >
-              <h2 className="text-red-400 text-xs">{slide.title}</h2>
+              <h2 className="text-red-400 text-4xl">{slide.title}</h2>
               <p>{slide.description}</p>
             </div>
             <Link to={slide.link}>
