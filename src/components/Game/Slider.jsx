@@ -3,6 +3,7 @@ import anh1 from "../../assets/GameImage/img1.jpg";
 import anh2 from "../../assets/GameImage/img2.jpg";
 import anh3 from "../../assets/GameImage/img3.jpg";
 import anh4 from "../../assets/GameImage/img4.jpg";
+import game1 from "../../assets/GameImage/game1.jpeg";
 import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const Slider = () => {
   const { season } = useTheme();
   const [slides, setSlides] = useState([
     {
-      img: anh1,
+      img: game1,
       title: "Word game",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
