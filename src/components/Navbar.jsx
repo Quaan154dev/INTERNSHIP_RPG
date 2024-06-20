@@ -1,46 +1,97 @@
 import React, { useEffect, useRef, useState } from "react";
-import { logo } from "../assets";
-import { styles } from "../styles";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import navClick from "../assets/mp3/navClick.mp3";
 import Sound from "./Sound";
+import { useTheme } from "../ThemeContext";
+import { logoFall, logoSp, logoWinter, logoSum } from "../assets";
+import { styles } from "../styles";
 import { useSound } from "../SoundCotext";
 
 const Navbar = ({ active }) => {
+  const { season } = useTheme();
   const [activeItem, setActiveItem] = useState(active);
   const navClickRef = useRef(new Audio(navClick));
   const { isSoundEnabled } = useSound();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
     }
   };
-  const handleMenuItemClick = (item) => {
+
+  const handleMenuItemClick = (item, path) => {
     setActiveItem(item);
     playHoverSound(navClickRef);
+    setIsModalOpen(false);
+    navigate(path);
   };
-  const textRef = useRef(null);
-  const containerRef = useRef(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
+  const [backgroundColor, setBackgroundColor] = useState("");
+  const [borderColor, setBorderColor] = useState("");
 
   useEffect(() => {
-    const textElement = textRef.current;
-    const containerElement = containerRef.current;
-
-    if (textElement && containerElement) {
-      const isOverflow = textElement.scrollWidth > containerElement.clientWidth;
-      setIsOverflowing(isOverflow);
+    switch (season) {
+      case "spring":
+        setBackgroundColor("bg-pink-300");
+        setBorderColor("border-pink-800");
+        break;
+      case "summer":
+        setBackgroundColor("bg-green-300");
+        setBorderColor("border-green-800");
+        break;
+      case "fall":
+        setBackgroundColor("bg-orange-300");
+        setBorderColor("border-orange-800");
+        break;
+      case "winter":
+        setBackgroundColor("bg-blue-300");
+        setBorderColor("border-blue-800");
+        break;
+      default:
+        setBackgroundColor("bg-green-300");
+        setBorderColor("border-green-800");
+        break;
     }
-  }, []);
+  }, [season]);
+
+  let logoImage;
+  switch (season) {
+    case "spring":
+      logoImage = logoSp;
+      break;
+    case "summer":
+      logoImage = logoSum;
+      break;
+    case "fall":
+      logoImage = logoFall;
+      break;
+    case "winter":
+      logoImage = logoWinter;
+      break;
+    default:
+      logoImage = logoSum;
+      break;
+  }
 
   return (
     <>
       <nav
-        className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20`}
+        className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20 max-md:px-1 `}
       >
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
           <Link
@@ -48,71 +99,109 @@ const Navbar = ({ active }) => {
             className="flex justify-center self-center items-center"
           >
             <img
-              src={logo}
+              src={logoImage}
               alt="logo"
-              className="w-9 h-9 object-contain max-md:h-7"
+              className="object-contain"
+              style={{
+                objectFit: "contain",
+                objectPosition: "center",
+                width: "30px",
+                height: "30px",
+              }}
             />
-            <p
-              className={`blueX-text hidden ${styles.sectionSubText} max-md:block`}
-            >
-              A website where you can Learn & Play the Korean alphabet
-            </p>
           </Link>
 
-          <div className="flex h-min gap-2 items-center ">
-            <div className=" flex h-min items-center ">
+          <div className="flex h-min gap-2 items-center">
+            <div className="flex h-min items-center">
               <Sound />
             </div>
             <div
-              className={
-                activeItem === "work"
-                  ? "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointer   text-sx max-md:hidden"
-                  : activeItem === "home"
-                  ? "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointe text-sx max-md:hidden"
-                  : "w-full  flex gap-2 items-center rounded-2xl   font-light shadow-lg cursor-pointer    text-sx max-md:hidden"
-              }
+              className={`w-full flex gap-2 items-center rounded-2xl font-light shadow-lg cursor-pointer text-sx `}
             >
-              <Link to="/home">
-                <span
-                  className={
-                    activeItem === "home"
-                      ? " bg-pink-300  cursor-pointer text-sx rounded-2xl  pl-2 pr-2 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
-                      : "pl-2 pr-2  cursor-pointer"
-                  }
-                  onClick={() => handleMenuItemClick("home")}
-                >
-                  Home
-                </span>
-              </Link>
-              <Link to="/learn">
-                <span
-                  className={
-                    activeItem === "work"
-                      ? " pr-2 pl-2 rounded-2xl  cursor-pointer  bg-pink-300 border-solid border-pink-100 border-2 button-gradient-nav-hover flex h-max"
-                      : "pr-2 pl-2  cursor-pointer"
-                  }
-                  onClick={() => handleMenuItemClick("work")}
-                >
-                  Work hard
-                </span>
-              </Link>
               <span
-                className={
+                className={`${
+                  activeItem === "home"
+                    ? `bg-${borderColor} cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pl-2 pr-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("home", "/home")}
+              >
+                Home
+              </span>
+              <span
+                className={`${
+                  activeItem === "work"
+                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pr-2 pl-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("work", "/learn")}
+              >
+                Work hard
+              </span>
+              <span
+                className={`${
                   activeItem === "play"
-                    ? "  bg-pink-300  cursor-pointer  rounded-2xl pl-2 pr-2 button-gradient-nav-hover border-solid border-pink-100 border-2 flex h-max "
-                    : "pr-2 pl-2  cursor-pointer"
-                }
-                onClick={() => handleMenuItemClick("play")}
+                    ? `bg-${borderColor} cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pr-2 pl-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("play", "/play")}
               >
                 Play hard
               </span>
             </div>
-            <span className="hidden max-md:block ">
-              <FontAwesomeIcon icon={faBars} />
-            </span>
           </div>
         </div>
       </nav>
+
+      {isModalOpen && (
+        <div
+          className={`fixed inset-0 z-30 flex items-center justify-center ${backgroundColor} bg-opacity-50`}
+          onClick={closeModal}
+        >
+          <div className={`rounded-lg p-4 ${backgroundColor}-200`}>
+            <div className="flex justify-end">
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={`text-${borderColor}-800 cursor-pointer`}
+                onClick={toggleModal}
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <span
+                className={`${
+                  activeItem === "home"
+                    ? `bg-${borderColor} cursor-pointer text-sx rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pl-2 pr-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("home", "/home")}
+              >
+                Home
+              </span>
+              <span
+                className={`${
+                  activeItem === "work"
+                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pr-2 pl-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("work", "/learn")}
+              >
+                Work hard
+              </span>
+
+              <span
+                className={`${
+                  activeItem === "play"
+                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
+                    : "pr-2 pl-2 cursor-pointer"
+                }`}
+                onClick={() => handleMenuItemClick("play", "/play")}
+              >
+                Play hard
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

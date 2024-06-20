@@ -5,8 +5,23 @@ import Navbar from "../../components/Navbar";
 const LearnHome = () => {
   return (
     <>
-      <Navbar active="work" />
-      <HomeStudy />
+      <div
+      // initial={{
+      //   x: "-100vw",
+      //   opacity: 0,
+      // }}
+      // animate={{
+      //   x: 0,
+      //   opacity: 1,
+      // }}
+      // transition={{
+      //   transition: 0.5,
+      // }}
+      // exit={{ y: "-100vh" }}
+      >
+        <Navbar active="work" />
+        <HomeStudy />
+      </div>
     </>
   );
 };

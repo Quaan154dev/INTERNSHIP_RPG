@@ -1,34 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import hoverSound from "../assets/mp3/hoverSound.mp3";
+import { useTheme } from "../ThemeContext";
+import { useSound } from "../SoundCotext";
 import workHoverSound from "../assets/mp3/workSound.mp3";
 import gameClick from "../assets/mp3/gameClick.mp3";
-import { useSound } from "../SoundCotext";
-const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    const listener = () => setMatches(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, [query]);
-
-  return matches;
-};
+import { Link } from "react-router-dom";
 const Choice = () => {
   const { isSoundEnabled } = useSound();
+  const { season } = useTheme();
 
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
-  const [workHover, setWorkHover] = useState(false);
-  const [playHover, setPlayHover] = useState(false);
+  const hoverUrl = useRef(new Audio(hoverSound));
   const clickAudioRef = useRef(new Audio(workHoverSound));
   const gameClickRef = useRef(new Audio(gameClick));
-  useEffect(() => {
-    if (workHover) {
-      playHoverSound(clickAudioRef);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [workHover]);
+
+  const [hoverButton, setHoverButton] = useState(false);
+  const [workHover, setWorkHover] = useState(false);
+  const [playHover, setPlayHover] = useState(false);
+
   const playHoverSound = (audioRef) => {
     if (audioRef.current && isSoundEnabled) {
       audioRef.current.currentTime = 0;
@@ -37,125 +26,76 @@ const Choice = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (workHover) {
+      playHoverSound(clickAudioRef);
+    }
+  }, [workHover]);
+
   useEffect(() => {
     if (playHover) {
       playHoverSound(gameClickRef);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playHover]);
 
+  useEffect(() => {
+    if (hoverButton) {
+      playHoverSound(hoverUrl);
+    }
+  }, [hoverButton]);
   return (
     <>
-      {!isSmallScreen ? (
-        <p
-          className={
-            workHover
-              ? "text-xs italic blueX-text "
-              : playHover
-              ? "text-xs italic redX-text"
-              : "text-xs italic text-white "
-          }
-        >
-          Choose the method you want to choose to learn
-        </p>
-      ) : (
-        <p className={"text-xs italic "}>
-          <span className="blueX-text"> Choose the method you </span>
-          <span className="redX-text">want to choose to learn</span>
-        </p>
-      )}
-      <div className=" flex gap-4">
+      <p
+        className={
+          workHover
+            ? `text-xs italic ${season}-button-gradient-left-text max-md:hidden`
+            : playHover
+            ? `text-xs italic ${season}-button-gradient-right-text max-md:hidden`
+            : `text-xs italic ${season}-button-gradient-none-text max-md:hidden`
+        }
+      >
+        Choose the method you want to choose to learn
+      </p>
+
+      <div className="flex gap-8 justify-center ">
         <Link to="/learn">
           <button
-            className="flex flex-col text-center items-center gap-1 "
+            className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md `}
             onMouseEnter={() => setWorkHover(true)}
             onMouseLeave={() => setWorkHover(false)}
           >
-            {isSmallScreen ? (
-              <>
-                <span
-                  className={
-                    "pl-1 pr-1 border-2 text-blue-600 border-blue-100 font-light shadow-lg cursor-pointer button-gradient-left-hover border-solid"
-                  }
-                >
-                  Work hard
-                </span>
-                <span
-                  className="absolute top-full mt-1 text-blue-800"
-                  style={{ fontSize: "12px" }}
-                >
-                  Study with Card
-                </span>
-              </>
-            ) : (
-              <>
-                <span
-                  className={
-                    workHover
-                      ? "pl-1 pr-1 border-2 text-blue-200 border-blue-100 font-light shadow-lg cursor-pointer button-gradient-left-hover border-solid"
-                      : "pl-1 pr-1 border-2 border-solid border-blue-200 cursor-pointer text-blue-200 font-light shadow-lg"
-                  }
-                >
-                  Work hard
-                </span>
-                {workHover && (
-                  <span
-                    className="absolute top-full mt-1 text-blue-100"
-                    style={{ fontSize: "12px" }}
-                  >
-                    Study with Card
-                  </span>
-                )}
-              </>
-            )}
+            WORK HARD
           </button>
         </Link>
         <Link to="/play">
           <button
-            className="flex flex-col text-center items-center gap-1"
+            className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
             onMouseEnter={() => setPlayHover(true)}
             onMouseLeave={() => setPlayHover(false)}
           >
-            {isSmallScreen ? (
-              <>
-                <span
-                  className={
-                    "pl-1 pr-1 border-2 shadow text-red-600 button-gradient-right-hover border-solid"
-                  }
-                >
-                  Play hard
-                </span>
-                <span
-                  className="work-text opacity-100 text-red-800 absolute top-full mt-1"
-                  style={{ fontSize: "12px" }}
-                >
-                  Game to practice
-                </span>
-              </>
-            ) : (
-              <>
-                <span
-                  className={
-                    playHover
-                      ? "pl-1 pr-1 border-2 shadow text-red-100 button-gradient-right-hover border-solid"
-                      : "pl-1 pr-1 border-2 shadow border-red-100 text-red-100 border-solid"
-                  }
-                >
-                  Play hard
-                </span>
-                {playHover && (
-                  <span
-                    className="work-text opacity-100 text-red-100 absolute top-full mt-1"
-                    style={{ fontSize: "12px" }}
-                  >
-                    Game to practice
-                  </span>
-                )}
-              </>
-            )}
+            PLAY HARD
           </button>
         </Link>
       </div>
+
+      {playHover && (
+        <span
+          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
+          style={{ fontSize: "12px" }}
+        >
+          You can learn the Korean alphabet with Games
+        </span>
+      )}
+
+      {workHover && (
+        <span
+          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
+          style={{ fontSize: "12px" }}
+        >
+          You can learn the Korean alphabet with Cards
+        </span>
+      )}
     </>
   );
 };
