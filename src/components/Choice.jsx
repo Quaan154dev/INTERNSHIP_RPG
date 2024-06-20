@@ -84,7 +84,7 @@ const Choice = () => {
           className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
           style={{ fontSize: "12px" }}
         >
-          You can learn by game
+          You can learn the Korean alphabet with Games
         </span>
       )}
 
@@ -93,7 +93,7 @@ const Choice = () => {
           className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
           style={{ fontSize: "12px" }}
         >
-          You can learn by game
+          You can learn the Korean alphabet with Cards
         </span>
       )}
     </>

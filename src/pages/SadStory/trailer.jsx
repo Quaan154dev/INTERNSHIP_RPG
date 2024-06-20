@@ -4,6 +4,7 @@ import girlImage from "../../assets/sadstory/girl.png";
 import sadBoyImage from "../../assets/sadstory/sadboy.png";
 import flowerImage from "../../assets/sadstory/flower.png";
 import gameImage from "../../assets/sadstory/gameImage.png";
+import { useTheme } from "../../ThemeContext";
 
 export default function Scene() {
   const [boySrc, setBoySrc] = useState(boyImage);
@@ -84,9 +85,11 @@ export default function Scene() {
     }
     setStep(step + 1);
   };
-
+  const { season } = useTheme();
   return (
-    <div className="relative w-[1500px] h-[800px] overflow-hidden bg-pink-300">
+    <div
+      className={` ${season}-gradient relative w-full h-full overflow-hidden  `}
+    >
       <div className="fixed top-0 left-0 w-full p-4 bg-white/70 backdrop-blur-md flex justify-between items-center">
         <div>{storyText}</div>
         <div>
