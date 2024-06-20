@@ -84,7 +84,7 @@ const Alphabetic = () => {
         <Link to="/learn">
           <button
             type="button"
-            class=" flex items-center justify-center w-1/2 px-1 py-1 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100  "
+            class=" flex items-center justify-center w-1/2 px-1 py-1 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100   "
           >
             <svg
               class="w-3 h-3 rtl:rotate-180"
@@ -104,7 +104,7 @@ const Alphabetic = () => {
           </button>
         </Link>
         <div className="flex flex-row gap-2 justify-center w-full">
-          <div className="basis-5/12">
+          <div className="basis-6/12 ">
             <h1
               className={`mb-5 ${styles["text-header"]} ${season}2-text-gradient`}
             >
@@ -124,7 +124,7 @@ const Alphabetic = () => {
               })}
             </div>
           </div>
-          <div className="basis-6/12">
+          <div className="basis-6/12  ">
             <h1
               className={`mb-5 ${styles["text-header"]} ${season}2-text-gradient `}
             >
