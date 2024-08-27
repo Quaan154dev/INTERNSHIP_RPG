@@ -16,6 +16,7 @@ export const boardSlice = createSlice({
     correctWord: getRandomWord(), // Chọn ngẫu nhiên một từ chính xác từ danh sách từ
     statuses: Array(24).fill(""),
   },
+  //
   reducers: {
     setBoard: (state, action) => {
       state.board = action.payload;
