@@ -5,13 +5,11 @@ const styles = {
 
   heroHeadText:
     "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] ",
-  heroSubText:
-    "text-[#dfd9ff] font-medium ",
+  heroSubText: "text-[#dfd9ff] font-medium ",
 
   sectionHeadText:
     "text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]",
-  sectionSubText:
-    "sm:text-[16px] text-[14px]  tracking-wider",
+  sectionSubText: "sm:text-[16px] text-[14px]  tracking-wider",
 };
 
 export { styles };
