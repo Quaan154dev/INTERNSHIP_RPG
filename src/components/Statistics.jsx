@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useTheme } from "../ThemeContext";
-
+//
 const Statistics = ({ feedbackCount, visited }) => {
   const [_, setVisited] = useState(0);
   const [feedback, setFeedback] = useState(0);

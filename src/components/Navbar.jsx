@@ -101,6 +101,7 @@ const Navbar = ({ active }) => {
             <div
               className={`w-full flex gap-2 items-center rounded-2xl font-light shadow-lg cursor-pointer text-sx `}
             >
+              {/*  */}
               <span
                 className={`${
                   activeItem === "home"

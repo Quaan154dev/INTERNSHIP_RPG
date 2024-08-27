@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { springImg, summerImg, fallImg, winterImg } from "../assets";
 import { useTheme } from "../ThemeContext";
-
+//
 const Theme = () => {
   const { season, setSeason } = useTheme();
   const handleClick = (season) => {

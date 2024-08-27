@@ -6,7 +6,7 @@ import buddhaImage from "../../assets/sadstory/boy.png";
 import gameImage from "../../assets/sadstory/boy.png";
 import HighExamImage from "../../assets/sadstory/flower.png";
 import LowExamImage from "../../assets/sadstory/flower.png";
-
+//
 export default function Scene() {
   const [lowExamStyles, setlowExamStyles] = useState("opacity-0 right-[-20%]");
   const [highExamStyles, sethighExamStyles] = useState(

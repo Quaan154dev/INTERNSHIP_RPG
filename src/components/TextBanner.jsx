@@ -45,7 +45,7 @@ const TextBanner = () => {
       playHoverSound(hoverUrl);
     }
   }, [hoverButton]);
-
+  //
   return (
     <div className="fog-effect bg-cover bg-no-repeat z-1 w-2/4 max-md:w-full max-md:pt-16">
       <div className="flex flex-col gap-8 items-center justify-center w-full max-md:gap-3">

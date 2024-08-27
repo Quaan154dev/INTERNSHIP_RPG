@@ -42,7 +42,7 @@ const Modal = ({
     arrowStyles.left = "-10px";
     arrowStyles.borderTop = "10px solid white";
   }
-
+  //
   return (
     <div
       style={{ ...modalStyles, ...position }}
