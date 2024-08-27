@@ -5,7 +5,7 @@ import sadBoyImage from "../../assets/sadstory/sadboy.png";
 import flowerImage from "../../assets/sadstory/flower.png";
 import gameImage from "../../assets/sadstory/gameImage.png";
 import { useTheme } from "../../ThemeContext";
-
+//
 export default function Scene() {
   const [boySrc, setBoySrc] = useState(boyImage);
   const [flowerStyles, setFlowerStyles] = useState("opacity-0 left-[-20%]");

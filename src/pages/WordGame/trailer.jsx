@@ -7,7 +7,7 @@ import gameImage from "../../assets/sadstory/boy.png";
 import HighExamImage from "../../assets/sadstory/highTest.png";
 import LowExamImage from "../../assets/sadstory/lowTest.png";
 import { useTheme } from "../../ThemeContext";
-
+//
 export default function Scene() {
   const [lowExamStyles, setLowExamStyles] = useState("opacity-0 right-[-20%]");
   const [highExamStyles, setHighExamStyles] = useState(

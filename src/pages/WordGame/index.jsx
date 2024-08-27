@@ -14,7 +14,6 @@ const WordGame = () => {
   return (
     <div id="wordGame" className={`w-full ${season}-gradient h-full relative`}>
       <div className="pt-8 h-screen flex overflow-hidden flex-col">
-        {/* <Heading type="h1" text="Word guessing game" /> */}
         <Link to="/play">
           <button
             type="button"
