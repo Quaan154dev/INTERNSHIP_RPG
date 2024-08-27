@@ -16,7 +16,9 @@ function AppRoutes() {
       <Route path="/trailer" element={<Scene></Scene>} />
 
       <Route path="/play" element={<PlayHard></PlayHard>} />
+
       <Route path="/trailer2" element={<Trailer></Trailer>} />
+
       <Route path="/sadstory" element={<SadStory></SadStory>} />
       <Route path="404" element={<NotFound />} />
     </Routes>
@@ -24,3 +26,4 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+///skmdldks
