@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { logoSumCanvas } from "./assets";
-
+//
 const ThemeContext = createContext({
   season: "spring",
   logo: { logoSumCanvas },
