@@ -1,37 +1,20 @@
 import React, { useState } from "react";
-import anh1 from "../../assets/GameImage/img1.jpg";
 import anh2 from "../../assets/GameImage/img2.jpg";
-import anh3 from "../../assets/GameImage/img3.jpg";
-import anh4 from "../../assets/GameImage/img4.jpg";
-import game1 from "../../assets/GameImage/img1.jpg";
 import { useTheme } from "../../ThemeContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { gameImage } from "../../assets";
+// import { gameImage } from "../../assets";
 
 const Slider = () => {
   const { season } = useTheme();
   const [slides, setSlides] = useState([
-    {
-      img: game1,
-      title: "Word Game",
-      description:
-        " Word game is a game that helps people improve their new words by guessing a new word.",
-      link: "/trailer2",
-    },
     {
       img: anh2,
       title: "Sad Story",
       description:
         "Weld letters will fall from above and the player must enter the correct letters on the screen.",
       link: "/sadstory",
-    },
-    {
-      img: anh3,
-      title: "Bubble Game",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur .",
     },
   ]);
 
@@ -82,16 +65,12 @@ const Slider = () => {
                   style={{ gap: 20, padding: 10 }}
                 >
                   <FontAwesomeIcon icon={faPlay} />
-                  {index === 0 ? <p> SEE MORE</p> : <></>}
+                  {index === 0 ? <p> PLAY GAME</p> : <></>}
                 </button>
               </div>
             </Link>
           </div>
         ))}
-      </div>
-      <div className="buttons">
-        <span className="prev" onClick={prevSlide}></span>
-        <span className="next" onClick={nextSlide}></span>
       </div>
     </div>
   );

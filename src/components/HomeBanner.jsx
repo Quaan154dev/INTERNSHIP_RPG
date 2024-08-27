@@ -179,52 +179,6 @@ const HomeBanner = () => {
         </ScrollControls>
         <Environment preset="dawn" blur={0.5} />
       </Canvas>
-      <div className="absolute right-20 max-md:hidden">
-        <p
-          className={`${season}2-text-gradient `}
-          style={{
-            position: "relative",
-            // left: 200,
-            fontSize: "13px",
-          }}
-        >
-          scroll up/down ...
-        </p>
-
-        {/* <div className="w-[24px] h-[32px] rounded-xl absolute border-4 border-white-100 flex justify-center items-start p-1">
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: "loop",
-          }}
-          className="w-1 h-2 rounded-full bg-white-100"
-        />
-      </div> */}
-        <p
-          className={`${season}2-text-gradient max-md:block `}
-          style={{
-            position: "relative",
-            // left: 200,
-            fontSize: "13px",
-          }}
-        >
-          click to change to season
-        </p>
-      </div>
-      {/* <div className="hidden absolute max-md:block top-1/2  right-10 ">
-        <p
-          className={`${season}2-text-gradient hidden max-md:block max-md:text-sm`}
-          style={{
-            position: "relative",
-          }}
-        >
-          Click to change to season
-        </p>
-      </div> */}
     </div>
   );
 };

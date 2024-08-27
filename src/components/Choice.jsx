@@ -59,15 +59,6 @@ const Choice = () => {
       </p>
 
       <div className="flex gap-8 justify-center ">
-        <Link to="/learn">
-          <button
-            className={`${season}-button-gradient-left-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-left-text text-base max-md:text-md `}
-            onMouseEnter={() => setWorkHover(true)}
-            onMouseLeave={() => setWorkHover(false)}
-          >
-            WORK HARD
-          </button>
-        </Link>
         <Link to="/play">
           <button
             className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
@@ -78,24 +69,6 @@ const Choice = () => {
           </button>
         </Link>
       </div>
-
-      {playHover && (
-        <span
-          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
-          style={{ fontSize: "12px" }}
-        >
-          You can learn the Korean alphabet with Games
-        </span>
-      )}
-
-      {workHover && (
-        <span
-          className={`${season}-button-gradient-left-note work-text opacity-100 absolute mt-24 max-md:hidden`}
-          style={{ fontSize: "12px" }}
-        >
-          You can learn the Korean alphabet with Cards
-        </span>
-      )}
     </>
   );
 };

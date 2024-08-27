@@ -81,9 +81,7 @@ const TextBanner = () => {
             ALPHABET
           </span>
         </h1>
-        <div className="md:hidden max-md:flex font-mono ">
-          <Statistics feedbackCount={26} visited={43} />
-        </div>
+        <div className="md:hidden max-md:flex font-mono "></div>
         <div className="flex flex-col  justify-center gap-5   max-md:hidden">
           <Choice />
         </div>

@@ -24,17 +24,6 @@ function Home() {
               <TextBanner />
 
               <HomeBanner />
-              <div className="hidden max-md:block">
-                <span
-                  className={`hidden mb-1 ${season}-button-gradient-left-note work-text opacity-100  justify-center  max-md:flex `}
-                  style={{
-                    fontSize: "12px",
-                  }}
-                >
-                  Choose one to learn by Card or by Game
-                </span>
-                <Choice />
-              </div>
             </div>
           </div>
           <div className=" font-mono i fixed bottom-0 left-1/2 transform -translate-x-1/2 flex  justify-center items-center max-md:hidden">

@@ -6,7 +6,6 @@ const Sound = () => {
   const { isSoundEnabled, toggleSound } = useSound();
 
   return (
-    
     <button className="text-red-700 cursor-pointer" onClick={toggleSound}>
       {isSoundEnabled ? (
         <FontAwesomeIcon icon={faVolumeHigh} />

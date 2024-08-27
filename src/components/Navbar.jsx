@@ -94,23 +94,6 @@ const Navbar = ({ active }) => {
         className={`${styles.paddingX} w-full flex items-center fixed top-4 z-20 max-md:px-1 `}
       >
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto animate-[slidedown_2s_cubic-bezier(.19,1,.22,1)_forwards]">
-          <Link
-            to="/home"
-            className="flex justify-center self-center items-center"
-          >
-            <img
-              src={logoImage}
-              alt="logo"
-              className="object-contain"
-              style={{
-                objectFit: "contain",
-                objectPosition: "center",
-                width: "30px",
-                height: "30px",
-              }}
-            />
-          </Link>
-
           <div className="flex h-min gap-2 items-center">
             <div className="flex h-min items-center">
               <Sound />
@@ -127,16 +110,6 @@ const Navbar = ({ active }) => {
                 onClick={() => handleMenuItemClick("home", "/home")}
               >
                 Home
-              </span>
-              <span
-                className={`${
-                  activeItem === "work"
-                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
-                    : "pr-2 pl-2 cursor-pointer"
-                }`}
-                onClick={() => handleMenuItemClick("work", "/learn")}
-              >
-                Work hard
               </span>
               <span
                 className={`${
