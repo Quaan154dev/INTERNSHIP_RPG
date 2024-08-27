@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Slider from "../../components/Game/Slider";
-import "../PlayHard/styles.css";
+import "./styles.css";
 function PlayHard() {
   return (
     <>

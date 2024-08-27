@@ -31,7 +31,7 @@ import soundNextLevelEffect from "../assets/mp3/nextLevel.mp3";
 import soundFailureEffect from "../assets/mp3/failure.mp3";
 
 import { Howl } from "howler";
-import { StarsCanvas } from "../components/canvas";
+import { StarsCanvas } from "./canvas";
 import { useTheme } from "../ThemeContext";
 
 const Game = () => {

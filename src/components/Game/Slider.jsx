@@ -13,7 +13,7 @@ const Slider = () => {
       img: anh2,
       title: "Sad Story",
       description:
-        "Weld letters will fall from above and the player must enter the correct letters on the screen.",
+        "Weld letters will fall from above kj and the player must enter the correct letters on the screen.",
       link: "/sadstory",
     },
   ]);
