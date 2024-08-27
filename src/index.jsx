@@ -7,7 +7,7 @@ import { SoundProvider } from "./SoundCotext.js";
 import ThemeProvider from "./ThemeContext.js";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-
+//
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SoundProvider>

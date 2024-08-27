@@ -30,7 +30,7 @@ class BentPlaneGeometry extends THREE.PlaneGeometry {
     pos.needsUpdate = true;
   }
 }
-
+//
 class MeshSineMaterial extends THREE.MeshBasicMaterial {
   constructor(parameters = {}) {
     super(parameters);
