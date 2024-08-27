@@ -1,6 +1,3 @@
-import { StarsCanvas } from './canvas';
+import { StarsCanvas } from "./canvas";
 
-
-export {
-  StarsCanvas
-};
+export { StarsCanvas };

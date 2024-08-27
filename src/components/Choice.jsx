@@ -55,7 +55,7 @@ const Choice = () => {
             : `text-xs italic ${season}-button-gradient-none-text max-md:hidden`
         }
       >
-        Choose the method you want to choose to learn
+        Choose the method you want to choose to learnn
       </p>
 
       <div className="flex gap-8 justify-center ">

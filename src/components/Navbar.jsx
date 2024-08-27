@@ -111,6 +111,7 @@ const Navbar = ({ active }) => {
               >
                 Home
               </span>
+              {/*  */}
               <span
                 className={`${
                   activeItem === "play"
