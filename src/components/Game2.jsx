@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import useInterval from "../hooks/useInterval";
+import useInterval from "../hooks/useInterval2";
 
 import springBg from "../assets/Spring/Spring.jpg";
 import summerBg from "../assets/Summer/Summer.jpg";

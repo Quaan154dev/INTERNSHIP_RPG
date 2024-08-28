@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import Slider from "../../components/Game/Slider";
+import Navbar from "../../components/Navbar2";
+import Slider from "../../components/Game/Slider2";
 import "./styles.css";
 function PlayHard() {
   return (
