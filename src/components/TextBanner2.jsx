@@ -56,7 +56,7 @@ const TextBanner = () => {
       <div className="flex flex-col gap-8 items-center justify-center w-full max-md:gap-3">
         <h1 className={`flex flex-col gap-5 max-md:gap-2`}>
           <h4
-            className={`${season}-top-text flex flex-col justify-start text-[16px] leading-[1.5] items-start max-md:hidden whitespace-nowrap overflow-hidden relative transform -translate-x-full transition-transform duration-[2000ms] ease-in-out`}
+            className={`relative overflow-hidden whitespace-nowrap text-[16px] leading-[1.5] ${season}-top-text flex flex-col justify-start items-start max-md:hidden animate-scroll-letters`}
           >
             Dear React Plus, I’m excited to apply for an internship and look
             forward to contributing to your team.

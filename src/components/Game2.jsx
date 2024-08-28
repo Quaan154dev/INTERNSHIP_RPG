@@ -45,6 +45,7 @@ const Game = () => {
   const [isOnSupport, setIsOnSupport] = useState(false);
   const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
   const [backgroundMusic, setBackgroundMusic] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const { season, setSeason } = useTheme();
 
   const backgrounds = [springBg, summerBg, fallBg, winterBg];
@@ -261,8 +262,9 @@ const Game = () => {
   useInterval(() => {
     if (!isPaused) {
       spawnBall();
+      setElapsedTime((prevTime) => prevTime + 1);
     }
-  }, 2000);
+  }, 1000);
 
   const checkOverlap = (newBall, balls) => {
     return balls.some((ball) => {
@@ -274,48 +276,70 @@ const Game = () => {
   };
 
   const spawnBall = () => {
-    const letters =
-      "ㅏㅁㅂㅅㅇㄹㅎㅗㅓㅑㅐㅣㅔㄱㄴㄷㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅔ";
-    const letter = letters[Math.floor(Math.random() * letters.length)];
-    const currentBackground = backgrounds[currentBackgroundIndex];
-    const imgList = ballImages[currentBackground];
-    const img = imgList[Math.floor(Math.random() * imgList.length)];
+    const randomLetter = generateRandomLetter();
+    const randomX = Math.random() * (canvasRef.current.width - 60) + 30;
+    const randomRadius = 30;
+    const randomSpeed = Math.random() * 1 + 0.5;
 
-    let newBall;
-    do {
-      const x = Math.random() * (canvasRef.current.width - 80) + 40;
-      newBall = { x, y: 10, radius: 35, letter, img, speed: 1 + score / 100 };
-    } while (checkOverlap(newBall, balls));
+    const newBall = {
+      x: randomX,
+      y: -randomRadius,
+      radius: randomRadius,
+      speed: randomSpeed,
+      letter: randomLetter,
+      img: generateRandomBallImage(),
+    };
 
-    setBalls((prevBalls) => [...prevBalls, newBall]);
-    addLetterToList(letter);
+    setBalls((prevBalls) => {
+      if (checkOverlap(newBall, prevBalls)) {
+        return prevBalls;
+      } else {
+        return [...prevBalls, newBall];
+      }
+    });
   };
 
-  function addLetterToList(letter) {
-    const englishLetter = koreanKeyMap[letter] || letter;
-    const letterElement = document.createElement("div");
-    letterElement.textContent = englishLetter;
-    letterElement.id = `letter-${letter}`;
-    containLetterRef.current.appendChild(letterElement);
-  }
+  const generateRandomLetter = () => {
+    const keys = Object.keys(koreanKeyMap);
+    return keys[Math.floor(Math.random() * keys.length)];
+  };
 
-  function removeLetterFromList(letter) {
-    const letterElement = document.getElementById(`letter-${letter}`);
-    if (letterElement) {
-      letterElement.remove();
-    }
-  }
+  const generateRandomBallImage = () => {
+    const currentBackground = backgrounds[currentBackgroundIndex];
+    const ballImageArray = ballImages[currentBackground];
+    return ballImageArray[Math.floor(Math.random() * ballImageArray.length)];
+  };
+
+  const removeLetterFromList = (letter) => {
+    setBalls((prevBalls) => prevBalls.filter((ball) => ball.letter !== letter));
+  };
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeydown);
-    return () => {
-      window.removeEventListener("keydown", handleKeydown);
+    const handleKeyPress = (event) => {
+      handleKeydown(event);
     };
-  });
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [balls, score]);
+
+  useEffect(() => {
+    let timer;
+    if (!isPaused && !isEnd) {
+      timer = setInterval(() => {
+        setElapsedTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isPaused, isEnd]);
 
   return (
     <div
-      className={`${season}-gradient relative w-full h-full flex justify-center `}
+      className={`relative w-full h-full flex flex-col items-center ${
+        season ? `${season}-gradient` : ""
+      }`}
     >
       <StarsCanvas />
       <canvas
@@ -323,44 +347,58 @@ const Game = () => {
         ref={canvasRef}
         width="600"
         height="600"
-        className="relative bg-white rounded-lg shadow-card mt-12 mb-10"
+        className="relative bg-white rounded-lg shadow-card mt-12 mb-10 w-full max-w-[38rem]"
       ></canvas>
-      <div className="absolute top-2 left-0 right-0 mx-auto flex justify-between w-full px-4">
-        <div className="bg-gray-800 text-white p-2 rounded-md">
-          Score: {score}
+      <div className="absolute top-2 left-0 right-0 mx-auto flex flex-col sm:flex-row justify-between w-full px-4 ">
+        <div className="flex flex-col items-center sm:items-start">
+          <div className="bg-gray-800 text-white p-2 w-24 rounded-md flex justify-center xs:hidden xl:block ">
+            Points: {score}
+          </div>
+          <button
+            className="mb-4 mt-2  h-8 bg-contain bg-center flex bg-no-repeat xs:hidden xl:block"
+            style={{ backgroundImage: "url(buttonOwn.jpg) " }}
+            onClick={() => document.location.reload()}
+          >
+            New Game
+          </button>
+          <button
+            className="mb-4 w-24 h-8 bg-contain bg-center bg-no-repeat bg-gray-300 border-gray-100 border-[1px] border-solid xs:hidden xl:block"
+            style={{ backgroundImage: "url(buttonOwn.jpg)" }}
+          >
+            Time: {elapsedTime}s
+          </button>
         </div>
-        <div className="bg-gray-800 text-white p-2 rounded-md">
+        <h1 className="text-3xl font-semibold text-center text-black xs:block">
+          LET'S PLAY
+        </h1>
+        <div className="bg-gray-800 text-white p-2 h-10 rounded-md xs:hidden xl:block">
           Health: {health}
         </div>
       </div>
-
       <div className="absolute bottom-2 left-2">
         <button
           id="menuButton"
           className="w-10 h-10 bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: "url(" + menu + ")" }}
+          style={{ backgroundImage: `url(${menu})` }}
           onClick={() => setIsPaused(true)}
         ></button>
       </div>
 
       <div
-        className={
-          isOnSupport
-            ? "bg-black text-white absolute bottom-2 right-2 flex p-2 rounded-md "
-            : "hidden"
-        }
+        className={`absolute bottom-2 right-2 flex p-2 rounded-md ${
+          isOnSupport ? "bg-black text-white" : "hidden"
+        }`}
         ref={containLetterRef}
       ></div>
 
       {isPaused && (
         <div
           id="MenuScreen"
-          className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 p-8 rounded-lg"
+          className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 p-8 rounded-lg w-full max-w-[26rem] xs:max-w-full"
         >
-          {isEnd ? (
-            <div className="text-white bg-black">Your Score:{score} </div>
-          ) : null}
-
+          {isEnd && (
+            <div className="text-white bg-black">Your Score: {score}</div>
+          )}
           <button
             className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
             style={{ backgroundImage: "url(buttonOwn.jpg)" }}
@@ -368,8 +406,7 @@ const Game = () => {
           >
             New Game
           </button>
-
-          {isEnd ? null : (
+          {!isEnd && (
             <button
               className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: "url(buttonOwn.jpg)" }}
@@ -378,25 +415,13 @@ const Game = () => {
               Resume
             </button>
           )}
-
-          {isOnSupport ? (
-            <button
-              className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: "url(buttonOwn.jpg)" }}
-              onClick={() => setIsOnSupport(true)}
-            >
-              Off Support
-            </button>
-          ) : (
-            <button
-              className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: "url(buttonOwn.jpg)" }}
-              onClick={() => setIsOnSupport(true)}
-            >
-              On Support{" "}
-            </button>
-          )}
-
+          <button
+            className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
+            style={{ backgroundImage: "url(buttonOwn.jpg)" }}
+            onClick={() => setIsOnSupport(!isOnSupport)}
+          >
+            {isOnSupport ? "Off Support" : "On Support"}
+          </button>
           <button
             className="mb-4 w-36 h-8 bg-contain bg-center bg-no-repeat"
             onClick={() => (window.location.href = "./sadstory")}
