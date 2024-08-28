@@ -55,17 +55,17 @@ const Choice = () => {
             : `text-xs italic ${season}-button-gradient-none-text max-md:hidden`
         }
       >
-        Choose the method you want to choose to learnn
+        Select the play button to learn Korean.
       </p>
 
-      <div className="flex gap-8 justify-center ">
+      <div className="flex gap-8 justify-center">
         <Link to="/play">
           <button
-            className={`${season}-button-gradient-right-hover ${season}-animated-button w-max pl-1 pr-1 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-md`}
+            className={`${season}-button-gradient-right-hover ${season}-animated-button pl-4 pr-4 border-2 border-pink-50 rounded-md cursor-pointer transition ease-in-out delay-150 ${season}-button-gradient-right-text text-base max-md:text-lg text-[40px] font-bold tracking-wide`}
             onMouseEnter={() => setPlayHover(true)}
             onMouseLeave={() => setPlayHover(false)}
           >
-            PLAY HARD
+            PLAY
           </button>
         </Link>
       </div>

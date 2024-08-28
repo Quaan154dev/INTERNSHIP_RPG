@@ -152,16 +152,6 @@ const Navbar = ({ active }) => {
               >
                 Home
               </span>
-              <span
-                className={`${
-                  activeItem === "work"
-                    ? `cursor-pointer rounded-2xl pl-2 pr-2 border-solid ${borderColor} border-2 flex h-max`
-                    : "pr-2 pl-2 cursor-pointer"
-                }`}
-                onClick={() => handleMenuItemClick("work", "/learn")}
-              >
-                Work hard
-              </span>
 
               <span
                 className={`${
@@ -171,7 +161,7 @@ const Navbar = ({ active }) => {
                 }`}
                 onClick={() => handleMenuItemClick("play", "/play")}
               >
-                Play hard
+                Play
               </span>
             </div>
           </div>

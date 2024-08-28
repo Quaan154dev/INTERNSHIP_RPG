@@ -4,7 +4,7 @@ import Home from "./Home/index2";
 
 import Scene from "./SadStory/index2";
 import SadStory from "./SadStory/trailer2";
-import PlayHard from "./PlayHard";
+import PlayHard from "./PlayHard/index2";
 import Trailer from "./WordGame/trailer";
 function AppRoutes() {
   return (

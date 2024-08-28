@@ -45,18 +45,26 @@ const TextBanner = () => {
       playHoverSound(hoverUrl);
     }
   }, [hoverButton]);
-  //
+  useEffect(() => {
+    const element = document.querySelector(`.${season}-top-text`);
+    element.classList.remove("-translate-x-full");
+    element.classList.add("translate-x-0");
+  }, []);
+
   return (
     <div className="fog-effect bg-cover bg-no-repeat z-1 w-2/4 max-md:w-full max-md:pt-16">
       <div className="flex flex-col gap-8 items-center justify-center w-full max-md:gap-3">
         <h1 className={`flex flex-col gap-5 max-md:gap-2`}>
-          <span
-            className={`${season}-top-text flex flex-col justify-start text-xs items-start max-md:hidden`}
+          <h4
+            className={`${season}-top-text flex flex-col justify-start text-[16px] leading-[1.5] items-start max-md:hidden whitespace-nowrap overflow-hidden relative transform -translate-x-full transition-transform duration-[2000ms] ease-in-out`}
           >
-            EASY AND INTERESTING
-          </span>
+            Dear React Plus, I’m excited to apply for an internship and look
+            forward to contributing to your team.
+          </h4>
 
-          <div className={`${season}-text-gradient flex items-center gap-5`}>
+          <div
+            className={`${season}-text-gradient flex items-center justify-center gap-5`}
+          >
             <span
               className={`${season}-text-gradient flex flex-col justify-start text-xs items-start max-md:hidden`}
             >
